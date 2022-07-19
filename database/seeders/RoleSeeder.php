@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\KetuaYayasan;
 use App\Models\Role;
 use App\Models\Siswa;
+use App\Models\Tagihan;
 use App\Models\User;
 use App\Models\TataUsaha;
 use Illuminate\Database\Seeder;
@@ -78,5 +79,30 @@ class RoleSeeder extends Seeder
             'alamat' => 'jl. gajah',
             'kelas' => '10 Ipa'
         ]);
+
+        // $tagian =  [
+        //         [
+        //             'id_siswa' => '1',
+        //             'bulan_bayar' => '2022-01-01',
+        //             'total' => 200000
+        //         ],
+        //         [
+        //             'id_siswa' => '1',
+        //             'bulan_bayar' => '2022-02-01',
+        //             'total' => 200000
+        //         ],
+        //         [
+        //             'id_siswa' => '1',
+        //             'bulan_bayar' => '2022-03-01',
+        //             'total' => 200000
+        //         ]
+        //         ];
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-01-01',
+                'total' => 200000
+            ]
+        );
     }
 }
