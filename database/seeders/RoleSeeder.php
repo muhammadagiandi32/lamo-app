@@ -80,27 +80,99 @@ class RoleSeeder extends Seeder
             'kelas' => '10 Ipa'
         ]);
 
-        // $tagian =  [
-        //         [
-        //             'id_siswa' => '1',
-        //             'bulan_bayar' => '2022-01-01',
-        //             'total' => 200000
-        //         ],
-        //         [
-        //             'id_siswa' => '1',
-        //             'bulan_bayar' => '2022-02-01',
-        //             'total' => 200000
-        //         ],
-        //         [
-        //             'id_siswa' => '1',
-        //             'bulan_bayar' => '2022-03-01',
-        //             'total' => 200000
-        //         ]
-        //         ];
+        //tagihan 1
         Tagihan::create(
             [
                 'id_siswa' => '1',
                 'bulan_bayar' => '2022-01-01',
+                'total' => 200000
+            ]
+        );
+        //2
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-02-01',
+                'total' => 200000
+            ]
+        );
+        //3
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-03-01',
+                'total' => 200000
+            ]
+        );
+        //4
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-04-01',
+                'total' => 200000
+            ]
+        );
+        //5
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-05-01',
+                'total' => 200000
+            ]
+        );
+        //6
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-06-01',
+                'total' => 200000
+            ]
+        );
+        //7
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-07-01',
+                'total' => 200000
+            ]
+        );
+        //8
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-08-01',
+                'total' => 200000
+            ]
+        );
+        //9
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-09-01',
+                'total' => 200000
+            ]
+        );
+        //10
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-10-01',
+                'total' => 200000
+            ]
+        );
+        //11
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-11-01',
+                'total' => 200000
+            ]
+        );
+        //12
+        Tagihan::create(
+            [
+                'id_siswa' => '1',
+                'bulan_bayar' => '2022-12-01',
                 'total' => 200000
             ]
         );
