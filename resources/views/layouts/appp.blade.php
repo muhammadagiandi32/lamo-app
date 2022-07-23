@@ -5190,63 +5190,63 @@ License: For each use you must have a valid license purchased only from above li
 						success: function(token)
 						{
 							console.log(token);
-							snap.pay(token.snaptoken, {
-								// Optional
-								onSuccess: function(result){
-									// /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-									// console.log(result);
-									var notifications = {
-										finish_redirect_url: result.finish_redirect_url,
-										fraud_status: result.fraud_status,
-										gross_amount: result.gross_amount,
-										order_id: result.order_id,
-										payment_type: result.payment_type,
-										status_code: result.status_code,
-										status_message: result.status_message,
-										transaction_id: result.transaction_id,
-										transaction_status: result.transaction_status,
-										transaction_time: result.transaction_time
-									}
-									console.log(CallbackStatus(notifications));
+							// snap.pay(token.snaptoken, {
+							// 	// Optional
+							// 	onSuccess: function(result){
+							// 		// /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+							// 		// console.log(result);
+							// 		var notifications = {
+							// 			finish_redirect_url: result.finish_redirect_url,
+							// 			fraud_status: result.fraud_status,
+							// 			gross_amount: result.gross_amount,
+							// 			order_id: result.order_id,
+							// 			payment_type: result.payment_type,
+							// 			status_code: result.status_code,
+							// 			status_message: result.status_message,
+							// 			transaction_id: result.transaction_id,
+							// 			transaction_status: result.transaction_status,
+							// 			transaction_time: result.transaction_time
+							// 		}
+							// 		console.log(CallbackStatus(notifications));
 
-								},
-								// Optional
-								onPending: function(result){
-									// /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-									var notifications = {
-										finish_redirect_url: result.finish_redirect_url,
-										fraud_status: result.fraud_status,
-										gross_amount: result.gross_amount,
-										order_id: result.order_id,
-										payment_type: result.payment_type,
-										status_code: result.status_code,
-										status_message: result.status_message,
-										transaction_id: result.transaction_id,
-										transaction_status: result.transaction_status,
-										transaction_time: result.transaction_time
-									}
-									console.log(CallbackStatus(notifications));
+							// 	},
+							// 	// Optional
+							// 	onPending: function(result){
+							// 		// /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+							// 		var notifications = {
+							// 			finish_redirect_url: result.finish_redirect_url,
+							// 			fraud_status: result.fraud_status,
+							// 			gross_amount: result.gross_amount,
+							// 			order_id: result.order_id,
+							// 			payment_type: result.payment_type,
+							// 			status_code: result.status_code,
+							// 			status_message: result.status_message,
+							// 			transaction_id: result.transaction_id,
+							// 			transaction_status: result.transaction_status,
+							// 			transaction_time: result.transaction_time
+							// 		}
+							// 		console.log(CallbackStatus(notifications));
 								
-								},
-								// Optional
-								onError: function(result){
-									// /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-									var notifications = {
-										finish_redirect_url: result.finish_redirect_url,
-										fraud_status: result.fraud_status,
-										gross_amount: result.gross_amount,
-										order_id: result.order_id,
-										payment_type: result.payment_type,
-										status_code: result.status_code,
-										status_message: result.status_message,
-										transaction_id: result.transaction_id,
-										transaction_status: result.transaction_status,
-										transaction_time: result.transaction_time
-									}
-									console.log(CallbackStatus(notifications));
+							// 	},
+							// 	// Optional
+							// 	onError: function(result){
+							// 		// /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+							// 		var notifications = {
+							// 			finish_redirect_url: result.finish_redirect_url,
+							// 			fraud_status: result.fraud_status,
+							// 			gross_amount: result.gross_amount,
+							// 			order_id: result.order_id,
+							// 			payment_type: result.payment_type,
+							// 			status_code: result.status_code,
+							// 			status_message: result.status_message,
+							// 			transaction_id: result.transaction_id,
+							// 			transaction_status: result.transaction_status,
+							// 			transaction_time: result.transaction_time
+							// 		}
+							// 		console.log(CallbackStatus(notifications));
 								
-								}
-							});
+							// 	}
+							// });
 						},
 						error: function(xhr, ajaxOptions, thrownError) {
 							console.log(xhr);

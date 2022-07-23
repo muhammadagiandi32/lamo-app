@@ -280,6 +280,7 @@
                                     <td>
                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
                                             <input name="check[]" id="check" class="form-check-input widget-9-check" type="checkbox" value="{{ $data->total }}">
+                                            <input name="id_tagihan[]" id="check" class="form-check-input widget-9-check" type="hidden" value="{{  encrypt($data->id)}}">
                                         </div>
                                     </td>
                                     <td>

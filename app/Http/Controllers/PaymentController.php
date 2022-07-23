@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class PaymentController extends Controller
 {
@@ -36,6 +37,18 @@ class PaymentController extends Controller
 
     public function snap_token(Request $request)
     {
+        // $data_id = respons()->json($request->id_tagihan);
+        $data_id = $request->id_tagihan;
+        foreach ($data_id as $key => $value) {
+
+            // return decrypt($key[$value]);
+        }
+
+
+        dd($value);
+        // foreach ($data_id as $data_value) {
+        //     $abcd = Crypt::decryptString($data_value);
+        // }
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = 'SB-Mid-server-JpF4nsP97oaxhsFzCoagiVUG';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
