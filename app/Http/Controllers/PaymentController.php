@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
@@ -26,7 +27,7 @@ class PaymentController extends Controller
     public function index()
     {
         //
-        $query = DB::table('tagihans')
+        $query = DB::table('tagihans')->select('*', 'tagihans.id AS id_tagihan')
             ->leftJoin('siswas', 'tagihans.id_siswa', '=', 'siswas.id')
             ->leftJoin('users', 'users.id', '=', 'siswas.user_id')->get();
         // dd($query);
@@ -37,19 +38,32 @@ class PaymentController extends Controller
 
     public function snap_token(Request $request)
     {
-        // $data_id = respons()->json($request->id_tagihan);
-        $data_id = $request->id_tagihan;
-        foreach ($data_id as $key => $value) {
+        $id_transaksi = rand();
 
-            // return decrypt($key[$value]);
+        foreach ($request->check as $data) {
+            $bayar[] = [
+                'order_id' => $id_transaksi,
+                'tagihan_id' => $data,
+                'total_bayar' => $request->total,
+                'status' => 1
+            ];
+            // dd($data);
+            DB::table('tagihans')->where('id', $data)->update(['order_id' => $id_transaksi]);
         }
+        // dd($request->check);
+        // dd(DB::getQueryLog());
+        // dd($request->check);
+        DB::table('transaksis')->insert($bayar);
 
 
-        dd($value);
-        // foreach ($data_id as $data_value) {
-        //     $abcd = Crypt::decryptString($data_value);
-        // }
-        // Set your Merchant Server Key
+        // $data_transaksi = [
+        //     'tagihan_id' => $request->check,
+        //     'total_bayar' => $request->total,
+        //     'status' => 1
+        // ];
+        // DB::table('transaksis')->insert($data_transaksi);
+        // return $request;
+        // return count($request->check);
         \Midtrans\Config::$serverKey = 'SB-Mid-server-JpF4nsP97oaxhsFzCoagiVUG';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
@@ -57,13 +71,13 @@ class PaymentController extends Controller
         \Midtrans\Config::$isSanitized = true;
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
-        $total = array_sum($request->check);
+        $total = count($request->check) * $request->total;
         $email = $request->email;
         $no_phone = $request->no_phone;
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => rand(),
+                'order_id' => $id_transaksi,
                 'gross_amount' => intval($total),
             ),
             'customer_details' => array(

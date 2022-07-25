@@ -15,11 +15,10 @@ class CreateTransaksisTable extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
+            $table->integer('order_id');
             $table->foreignId('tagihan_id');
             $table->decimal('total_bayar',  $precision = 8, $scale = 2);
             $table->integer('status');
-            $table->dateTime('tanggal_diterima');
-            $table->dateTime('tanggal_diambil');
             $table->timestamps();
         });
     }
