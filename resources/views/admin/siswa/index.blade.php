@@ -29,22 +29,14 @@
             </h3>
             <div class="card-toolbar">
                 <!--begin::Menu-->
-                <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
+                <a href="{{'siswas/create'}}" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
                     data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
                     <span class="svg-icon svg-icon-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="5" y="5" width="5" height="5" rx="1" fill="currentColor"></rect>
-                                <rect x="14" y="5" width="5" height="5" rx="1" fill="currentColor" opacity="0.3"></rect>
-                                <rect x="5" y="14" width="5" height="5" rx="1" fill="currentColor" opacity="0.3"></rect>
-                                <rect x="14" y="14" width="5" height="5" rx="1" fill="currentColor" opacity="0.3">
-                                </rect>
-                            </g>
-                        </svg>
+                    <i class="fas fa-plus"></i>
                     </span>
                     <!--end::Svg Icon-->
-                </button>
+                </a>
                 
             </div>
         </div>
