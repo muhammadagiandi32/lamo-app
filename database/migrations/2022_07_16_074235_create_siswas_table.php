@@ -22,6 +22,8 @@ class CreateSiswasTable extends Migration
             $table->text('kelas');
             $table->timestamps();
         });
+
+        $table->foreign('user_id')->references('id')->on('users');
     }
 
     /**
