@@ -15,15 +15,16 @@ class CreateSiswasTable extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->string('hp');
             $table->text('nama_orangtua');
             $table->text('alamat');
             $table->text('kelas');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
-        $table->foreign('user_id')->references('id')->on('users');
     }
 
     /**
