@@ -64,21 +64,6 @@ class RoleSeeder extends Seeder
             'nama' => 'siswa'
         ]);
 
-        $siswa = User::create([
-            'name' => 'agi',
-            'nis' => '7050800',
-            'email' => 'agi@gmail.com',
-            'password' => bcrypt('123123123'),
-            'role_id' => $role->id
-        ]);
-
-        Siswa::create([
-            'user_id' => $siswa->id,
-            'nama_orangtua' => 'Dede',
-            'hp' => '085123456789',
-            'alamat' => 'jl. gajah',
-            'kelas' => '10 Ipa'
-        ]);
 
         //tagihan 1
         Tagihan::create(

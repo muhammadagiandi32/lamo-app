@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Siswa;
 use App\Models\User;
+use App\Models\Siswa;
 
-class SiswaController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +15,9 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::select('siswas.*', 'users.*')
-        ->join('users', 'siswas.user_id', 'users.id')
-        ->where('role_id', '=', 3)
-        ->get();
-
-        // return $siswas;
-
-       return view('admin.siswa.index',compact('siswas'));
+        // $users =  User::with('siswas')->get();
+        // // return $users;
+        // return view('admin.user.index', compact('users'));
     }
 
     /**
@@ -32,8 +27,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-
-        return view('admin.siswa.create');
+        //
     }
 
     /**
@@ -44,24 +38,7 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        $user = new User;
-        $user->name = $request->name;
-        $user->nis = $request->nis;
-        $user->role_id = 3;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->save();
-
-        $siswa = new Siswa;
-        $siswa->hp = $request->hp;
-        $siswa->user_id = $user->id;
-        $siswa->nama_orangtua = $request->ortu;
-        $siswa->alamat = $request->alamat;
-        $siswa->kelas = $request->kelas;
-        $siswa->save();
-
-        return redirect('siswas')->with('success', 'success create new siswa');
+        //
     }
 
     /**
@@ -72,9 +49,7 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-
         //
-       
     }
 
     /**
@@ -83,17 +58,9 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Siswa $siswa)
+    public function edit($id)
     {
-
-        // $siswa = Siswa::select('siswas.*', 'users.*')
-        // ->join('users', 'siswas.user_id', 'users.id')
-        // ->where('role_id', '=', 3)
-        // ->get();
-
-        // return $siswa;
-
-        return view('admin.siswa.update', compact('siswa'));
+        //
     }
 
     /**

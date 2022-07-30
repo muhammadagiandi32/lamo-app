@@ -21,7 +21,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/siswas', App\Http\Controllers\SiswaController::class); 
+Route::resource('/siswas', App\Http\Controllers\SiswaController::class);
+Route::resource('/users', App\Http\Controllers\UserController::class); 
 
 // Payment Controller
 Route::resource('/payment', App\Http\Controllers\PaymentController::class);
