@@ -34,13 +34,14 @@
         <div class="card-body py-3">
             <form action="{{ url('siswas/'.$siswa->id) }}" method="post">
                 @csrf
+                {{ method_field('PUT') }}
                 <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">Nama</label>
                     <input type="text" name="name" value="{{$siswa->users->name}}" class="form-control form-control-solid" />
                 </div>
                 <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">NIS</label>
-                    <input type="number" name="nis" value="{{$siswa->users->nis}}" class="form-control form-control-solid" />
+                    <input type="text" name="nis" value="{{$siswa->users->nis}}" class="form-control form-control-solid" />
                 </div>
                 <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">Email</label>
@@ -62,11 +63,6 @@
                     <label for="exampleFormControlInput1" class="required form-label">Kelas</label>
                     <input type="text" name="kelas" value="{{$siswa->kelas}}" class="form-control form-control-solid" placeholder="" />
                 </div>
-                <div class="mb-10">
-                    <label for="exampleFormControlInput1" class="required form-label">Password</label>
-                    <input type="password" name="password" class="form-control form-control-solid" placeholder="" />
-                </div>
-
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

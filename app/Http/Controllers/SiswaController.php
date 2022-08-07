@@ -25,6 +25,18 @@ class SiswaController extends Controller
        return view('admin.siswa.index',compact('siswas'));
     }
 
+    public function dashboard()
+    {
+        $siswa = User::select('siswas.*', 'users.*')
+        ->join('siswas', 'siswas.user_id', 'users.id')
+        ->where('users.id', '=', auth()->id())
+            ->first();
+
+        // return $siswa;
+
+        return view('admin.siswa.dashboard', compact('siswa'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -86,13 +98,6 @@ class SiswaController extends Controller
     public function edit(Siswa $siswa)
     {
 
-        // $siswa = Siswa::select('siswas.*', 'users.*')
-        // ->join('users', 'siswas.user_id', 'users.id')
-        // ->where('role_id', '=', 3)
-        // ->get();
-
-        // return $siswa;
-
         return view('admin.siswa.update', compact('siswa'));
     }
 
@@ -103,9 +108,10 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,  Siswa $siswa)
     {
         //
+        return $request;
     }
 
     /**
