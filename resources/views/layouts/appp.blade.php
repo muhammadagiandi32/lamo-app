@@ -5234,7 +5234,116 @@ License: For each use you must have a valid license purchased only from above li
 												<!--end::Input-->
 											</div>`);
 			})
-		})
+		});
+
+		// checkbox Tagihan Buku SISWA
+		$(document).ready(function(){
+		
+			$('#selectAll').click(function() {
+                $('input[type="checkbox"]').prop('checked', this.checked);
+
+					if($('input[type="checkbox"]').is(':checked')){
+						
+								// $('input[name="id_siswa[]"]:checked').each(function() {
+								// 	var data_id = this.value;
+								// 	console.log(data_id);
+								// });
+							
+								// $.ajax({
+								// 	type: 'GET',
+								// 	url: "{{ url('/getDatasiswa') }}",
+								// 	headers: {
+								// 		'CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								// 	},
+								// 	datatType: 'json',
+								// 	processData: false,
+								// 	contentType: false,
+								// 	success: function(data) {
+								// 		console.log(data);
+								// 	},
+								// 	error: function(xhr, ajaxOptions, thrownError) {
+								// 		console.log(xhr);
+								// 	},
+								// });
+							$("#tagihanBuku").append(`
+							<div class="card mt-5">
+								
+								<div class="card-header">
+									<h3 class="card-title">
+										Input Tagihan Buku
+									</h3>
+								</div>
+								<!--begin::Form-->
+									<div class="card-body py-3">
+										<div class="form-group">
+											<div class="alert alert-custom alert-default" role="alert">
+												<div class="alert-icon"></div>
+												<div class="alert-text">
+													Input Nama Buku dan Jumlah Tagihan
+												</div>
+											</div>
+										</div>`+console.log()+`
+										<div class="form-group">
+											<label>Nama Tagihan</label>
+											<div class="input-group">
+												<div class="input-group-prepend"><span class="input-group-text"><i class="la la-exclamation-triangle icon-lg"></i></span></div>
+												<input type="text" name="nama_tagihan" class="form-control" placeholder="Nama Tagihan" />
+											</div>
+											<span class="form-text text-muted">Some help content goes here</span>
+										</div>
+										<div class="form-group">
+											<label>Jumlah Tagihan</label>
+											<div class="input-group">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Rp.</span>
+												</div>
+												<input type="text" name="total" class="form-control" placeholder="0.00" aria-label="Amount (to the nearest rupiah)" />
+												<div class="input-group-append">
+													<span class="input-group-text"><i class="la la-registered"></i></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card-footer">
+										<button type="submit" class="btn btn-primary mr-2">Submit</button>
+									</div>
+								
+								<!--end::Form-->
+							</div>`);
+					}else{
+						$("#tagihanBuku").html(``);
+					}
+				
+            });
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			$('#tagihan_buku').on('submit', function(event) {
+				event.preventDefault();
+				var form = this;
+				// console.log('data');
+				$.ajax({
+					type: 'POST',
+					url: '/tagihanBuku',
+					headers: {
+						'CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					},
+					datatType: 'json',
+					processData: false,
+					contentType: false,
+					data: new FormData(form),
+					success: function(data) {
+						console.log(data);
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						console.log(xhr);
+					},
+				});
+			});
+
+		});
 	</script>
 </body>
 <!--end::Body-->

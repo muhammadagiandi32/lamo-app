@@ -64,7 +64,104 @@ class RoleSeeder extends Seeder
             'nama' => 'siswa'
         ]);
 
-
+        // user siswa
+        User::create([
+            'name' => 'Siswa3',
+            'nik' => '53535353',
+            'email' => 'siswa3@gmail.com',
+            'password' => bcrypt('123123123'),
+            'role_id' => $role->id
+        ]);
+        User::create([
+            'name' => 'Siswa4',
+            'nik' => '53535353',
+            'email' => 'siswa4@gmail.com',
+            'password' => bcrypt('123123123'),
+            'role_id' => $role->id
+        ]);
+        User::create([
+            'name' => 'siswa5',
+            'nik' => '53535353',
+            'email' => 'siswa5@gmail.com',
+            'password' => bcrypt('123123123'),
+            'role_id' => $role->id
+        ]);
+        User::create([
+            'name' => 'siswa6',
+            'nik' => '53535353',
+            'email' => 'siswa6@gmail.com',
+            'password' => bcrypt('123123123'),
+            'role_id' => $role->id
+        ]);
+        User::create([
+            'name' => 'siswa7',
+            'nik' => '53535353',
+            'email' => 'siswa7@gmail.com',
+            'password' => bcrypt('123123123'),
+            'role_id' => $role->id
+        ]);
+        User::create([
+            'name' => 'siswa8',
+            'nik' => '53535353',
+            'email' => 'siswa8@gmail.com',
+            'password' => bcrypt('123123123'),
+            'role_id' => $role->id
+        ]);
+        // Siswa
+        Siswa::create(
+            [
+                'user_id' => 3,
+                'hp' => 02156156,
+                'nama_orangtua' => 'ccd',
+                'alamat' => 'Jl. Kebangsatan No.16',
+                'kelas' => 'VII'
+            ]
+        );
+        Siswa::create(
+            [
+                'user_id' => 4,
+                'hp' => 02156156,
+                'nama_orangtua' => 'ccd',
+                'alamat' => 'Jl. Kebangsatan No.16',
+                'kelas' => 'VII'
+            ]
+        );
+        Siswa::create(
+            [
+                'user_id' => 5,
+                'hp' => 02156156,
+                'nama_orangtua' => 'ccd',
+                'alamat' => 'Jl. Kebangsatan No.16',
+                'kelas' => 'VII'
+            ]
+        );
+        Siswa::create(
+            [
+                'user_id' => 6,
+                'hp' => 02156156,
+                'nama_orangtua' => 'ccd',
+                'alamat' => 'Jl. Kebangsatan No.16',
+                'kelas' => 'VII'
+            ]
+        );
+        Siswa::create(
+            [
+                'user_id' => 7,
+                'hp' => 02156156,
+                'nama_orangtua' => 'ccd',
+                'alamat' => 'Jl. Kebangsatan No.16',
+                'kelas' => 'VII'
+            ]
+        );
+        Siswa::create(
+            [
+                'user_id' => 8,
+                'hp' => 02156156,
+                'nama_orangtua' => 'ccd',
+                'alamat' => 'Jl. Kebangsatan No.16',
+                'kelas' => 'VII'
+            ]
+        );
         //tagihan 1
         Tagihan::create(
             [

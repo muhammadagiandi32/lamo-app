@@ -16,20 +16,25 @@ class SiswaController extends Controller
     public function index()
     {
         $siswas = Siswa::select('siswas.*', 'users.*')
-        ->join('users', 'siswas.user_id', 'users.id')
-        ->where('role_id', '=', 3)
-        ->get();
+            ->join('users', 'siswas.user_id', 'users.id')
+            ->where('role_id', '=', 3)
+            ->get();
 
         // return $siswas;
 
-       return view('admin.siswa.index',compact('siswas'));
+        return view('admin.siswa.index', compact('siswas'));
     }
 
+
+    public function tagihanBuku(Request $request)
+    {
+        return response()->json($request);
+    }
     public function dashboard()
     {
         $siswa = User::select('siswas.*', 'users.*')
-        ->join('siswas', 'siswas.user_id', 'users.id')
-        ->where('users.id', '=', auth()->id())
+            ->join('siswas', 'siswas.user_id', 'users.id')
+            ->where('users.id', '=', auth()->id())
             ->first();
 
         // return $siswa;
@@ -86,7 +91,7 @@ class SiswaController extends Controller
     {
 
         //
-       
+
     }
 
     /**

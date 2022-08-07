@@ -24,7 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/siswas', App\Http\Controllers\SiswaController::class);
 Route::resource('/users', App\Http\Controllers\UserController::class);
 Route::get('/siswas.dashboard', [App\Http\Controllers\SiswaController::class, 'dashboard']);
-
+Route::post('/tagihanBuku', [App\Http\Controllers\SiswaController::class, 'tagihanBuku']);
+Route::get('/getDatasiswa', [App\Http\Controllers\SiswaController::class, 'getDatasiswa']);
 // Payment Controller
 Route::resource('/payment', App\Http\Controllers\PaymentController::class);
 Route::post('/snaptoken', [App\Http\Controllers\PaymentController::class, 'snap_token']);

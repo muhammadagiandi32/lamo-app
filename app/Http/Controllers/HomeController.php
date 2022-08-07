@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function dataSiswa()
+    {
+        return view('home');
+    }
 }
