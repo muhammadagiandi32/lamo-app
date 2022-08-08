@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Siswa;
+use App\Models\TagihanBuku;
 use App\Models\User;
 
 class SiswaController extends Controller
@@ -15,7 +16,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::select('siswas.*', 'users.*')
+        $siswas = Siswa::select('siswas.*', 'siswas.id as id_siswa', 'users.*')
             ->join('users', 'siswas.user_id', 'users.id')
             ->where('role_id', '=', 3)
             ->get();
@@ -28,7 +29,25 @@ class SiswaController extends Controller
 
     public function tagihanBuku(Request $request)
     {
-        return response()->json($request);
+        // $validator = Validator::make($request->all(), ['name' => 'required']);
+        $arr = [];
+        foreach ($request->id_siswa as $data) {
+            $arr[] = [
+                'id_siswa' => $data,
+                'nama_tagihan' => $request->nama_tagihan,
+                'total' => $request->total,
+                'order_id' => 0,
+                'status' => 0,
+                'created_at' => now(),
+                'updated_at' => now()
+            ];
+        }
+        $return = TagihanBuku::insert($arr);
+        if ($return) {
+            return response()->json($arr);
+        } else {
+            return response()->json('gagal');
+        }
     }
     public function dashboard()
     {

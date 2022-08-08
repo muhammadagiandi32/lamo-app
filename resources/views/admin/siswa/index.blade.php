@@ -97,7 +97,7 @@
     
     
                             <tr>
-                                <td><span style="width: 20px;"><label class="checkbox checkbox-single"><input id="test" name="id_siswa[]" type="checkbox" value="{{ $siswa->id }}">&nbsp;<span></span></label></span></td>
+                                <td><span style="width: 20px;"><label class="checkbox checkbox-single"><input id="test" name="id_siswa[]" type="checkbox" value="{{ $siswa->id_siswa }}">&nbsp;<span></span></label></span></td>
                                 <td>
                                     <a href="#" class="text-dark fw-bold text-hover-primary fs-6">{{$key+1}}</a>
                                 </td>

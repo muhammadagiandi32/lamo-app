@@ -5287,7 +5287,7 @@ License: For each use you must have a valid license purchased only from above li
 											<label>Nama Tagihan</label>
 											<div class="input-group">
 												<div class="input-group-prepend"><span class="input-group-text"><i class="la la-exclamation-triangle icon-lg"></i></span></div>
-												<input type="text" name="nama_tagihan" class="form-control" placeholder="Nama Tagihan" />
+												<input required type="text" name="nama_tagihan" class="form-control" placeholder="Nama Tagihan" />
 											</div>
 											<span class="form-text text-muted">Some help content goes here</span>
 										</div>
@@ -5297,7 +5297,7 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="input-group-prepend">
 													<span class="input-group-text">Rp.</span>
 												</div>
-												<input type="text" name="total" class="form-control" placeholder="0.00" aria-label="Amount (to the nearest rupiah)" />
+												<input required type="text" name="total" class="form-control" placeholder="0.00" aria-label="Amount (to the nearest rupiah)" />
 												<div class="input-group-append">
 													<span class="input-group-text"><i class="la la-registered"></i></span>
 												</div>

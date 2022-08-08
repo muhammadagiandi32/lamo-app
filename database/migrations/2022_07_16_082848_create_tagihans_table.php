@@ -21,6 +21,8 @@ class CreateTagihansTable extends Migration
             $table->integer('order_id')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_siswa')->references('id')->on('siswas');
         });
     }
 

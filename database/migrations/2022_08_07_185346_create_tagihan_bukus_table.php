@@ -16,11 +16,13 @@ class CreateTagihanBukusTable extends Migration
         Schema::create('tagihan_bukus', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_siswa');
-            $table->integer('nama_tagihan');
-            $table->decimal('total', $precision = 8, $scale = 2);
+            $table->text('nama_tagihan');
+            $table->decimal('total', $precision = 12, $scale = 2);
             $table->integer('order_id')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_siswa')->references('id')->on('siswas');
         });
     }
 
