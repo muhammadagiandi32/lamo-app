@@ -134,20 +134,10 @@
     </div>
     <!--end::Col-->
 </div>
-{{-- 
-<script>
+
+{{-- <script>
     $(document).ready(function(){
-        $('form').on('submit', function(e){
-            e.preventDefault();
-
-            var selected_checkboxes = new Array();
-            //add each selected checkbox value to the array
-
-            $("#check input[type=checkbox]:checked").each(function () {
-                var a =  selected_checkboxes.push(this.value);
-                console.log(a);
-            });
-        })
+      
     });
 </script> --}}
 @endsection

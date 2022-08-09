@@ -6,9 +6,12 @@ use App\Models\Payment;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Arr;
+
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Arr;
+
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -27,9 +30,19 @@ class PaymentController extends Controller
     public function index()
     {
         //
+
+    }
+
+    public function showPayment($id)
+    {
+        $user_id = decrypt($id);
+
         $query = DB::table('tagihans')->select('*', 'tagihans.id AS id_tagihan')
             ->leftJoin('siswas', 'tagihans.id_siswa', '=', 'siswas.id')
-            ->leftJoin('users', 'users.id', '=', 'siswas.user_id')->get();
+            ->leftJoin('users', 'users.id', '=', 'siswas.user_id')
+            ->where('users.id', '=', $user_id)
+            ->where('tagihans.status', '=', NULL)
+            ->get();
         // dd($query);
         return view('siswa.index_payment', [
             'data' => $query
@@ -74,15 +87,15 @@ class PaymentController extends Controller
         $total = count($request->check) * $request->total;
         $email = $request->email;
         $no_phone = $request->no_phone;
-
+        $data_siswa = Auth::user()->name;
         $params = array(
             'transaction_details' => array(
                 'order_id' => $id_transaksi,
                 'gross_amount' => intval($total),
             ),
             'customer_details' => array(
-                'first_name' => 'budi',
-                'last_name' => 'pratama',
+                'first_name' => $data_siswa,
+                'last_name' => '',
                 'email' => $email[0],
                 'phone' => $no_phone[0],
             ),
@@ -141,6 +154,7 @@ class PaymentController extends Controller
     public function show(Payment $payment)
     {
         //
+
     }
 
     /**

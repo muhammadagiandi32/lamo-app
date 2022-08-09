@@ -258,7 +258,9 @@ License: For each use you must have a valid license purchased only from above li
 								</span>
 								<div class="menu-sub menu-sub-accordion menu-active-bg">
 									<div class="menu-item">
-										<a class="menu-link" href="/metronic8/demo1/../demo1/pages/about.html">
+										<a class="menu-link" href="{{ url('/showPayment').'/'.Crypt::encrypt(Auth::user()->id)}}">
+										{{-- <a class="menu-link" href="{{ url('/showPayment').Crypt::encrypt(Auth::user()->id)}}"> --}}
+
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
 											</span>
@@ -5134,6 +5136,9 @@ License: For each use you must have a valid license purchased only from above li
 									transaction_time: result.transaction_time
 								}
 								console.log(CallbackStatus(notifications));
+								setTimeout(function(){  
+									location.reload();  
+								},100);  
 
 							},
 							// Optional
@@ -5152,6 +5157,9 @@ License: For each use you must have a valid license purchased only from above li
 									transaction_time: result.transaction_time
 								}
 								console.log(CallbackStatus(notifications));
+								setTimeout(function(){  
+									location.reload();  
+								},100);  
 
 							},
 							// Optional
@@ -5170,6 +5178,9 @@ License: For each use you must have a valid license purchased only from above li
 									transaction_time: result.transaction_time
 								}
 								console.log(CallbackStatus(notifications));
+								setTimeout(function(){  
+									location.reload();  
+								},100);  
 
 							}
 						});
