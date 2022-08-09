@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//change password
+Route::get('account/password', [App\Http\Controllers\Account\PasswordController::class, 'edit'])->name('password.edit');
+Route::patch('account/password', [App\Http\Controllers\Account\PasswordController::class, 'update'])->name('password.edit');
+
 Route::resource('/siswas', App\Http\Controllers\SiswaController::class);
 Route::resource('/users', App\Http\Controllers\UserController::class);
 Route::get('/siswas.dashboard', [App\Http\Controllers\SiswaController::class, 'dashboard']);

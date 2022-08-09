@@ -167,12 +167,12 @@
                     <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
                         <!--begin::Nav item-->
                         <li class="nav-item mt-2">
-                            <a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="../../demo1/dist/account/overview.html">Overview</a>
+                            <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo1/dist/account/overview.html">Overview</a>
                         </li>
                         <!--end::Nav item-->
                         <!--begin::Nav item-->
                         <li class="nav-item mt-2">
-                            <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo1/dist/account/settings.html">Settings</a>
+                            <a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="../../demo1/dist/account/settings.html">Settings</a>
                         </li>
                         <!--end::Nav item-->
                         <!--begin::Nav item-->
@@ -191,95 +191,50 @@
                 </div>
             </div>
             <br>
+            @if(session('success'))
+            <div class="alert alert-success" role="alert">
+                <span>{{session('success')}}</span>
+            </div>
+            @enderror
             <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
                 <!--begin::Card header-->
                 <div class="card-header cursor-pointer">
                     <!--begin::Card title-->
                     <div class="card-title m-0">
-                        <h3 class="fw-bolder m-0">Profile Details</h3>
+                        <h3 class="fw-bolder m-0">Change Password</h3>
                     </div>
                     <!--end::Card title-->
-                    <!--begin::Action-->
-                    <a href="{{ url('siswas/'.$siswa->id.'/edit') }}" class="btn btn-primary align-self-center">Edit
-                        Profile</a>
-                    <!--end::Action-->
                 </div>
                 <!--begin::Card header-->
                 <!--begin::Card body-->
-                <div class="card-body p-9">
-                    <!--begin::Row-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Full Name</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8">
-                            <span class="fw-bolder fs-6 text-gray-800">{{Auth::user()->name}}</span>
+                <div class="card-body p-9 col-lg-6">
+
+                    <form action="{{route('password.edit')}}" method="post">
+                        @csrf
+                        @method('patch')
+                        <div class="form-group mt-3">
+                            <label for="old_password" class="required form-label">Old Password</label>
+                            <input type="password" name="old_password" class="form-control form-control-solid" />
+                            @error('old_password')
+                            <div class="text-danger mb-3">{{$message}}</div>
+                            @enderror
                         </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--begin::Row-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">NIS</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8">
-                            <span class="fw-bolder fs-6 text-gray-800">{{$siswa->nis}}</span>
+                        <div class="form-group mt-3">
+                            <label for="password" class="required form-label">Password</label>
+                            <input type="password" name="password" class="form-control form-control-solid" />
+                            @error('password')
+                            <div class="text-danger mb-3">{{$message}}</div>
+                            @enderror
                         </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Row-->
-                    <!--begin::Row-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Email</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8">
-                            <span class="fw-bolder fs-6 text-gray-800">{{$siswa->email}}</span>
+                        <div class="form-group mt-3">
+                            <label for="confirm_password" class="required form-label">Confirm Password</label>
+                            <input type="password" name="password_confirmation" class="form-control form-control-solid" />
                         </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Row-->
-                    <!--begin::Row-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Nomor HP</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8">
-                            <span class="fw-bolder fs-6 text-gray-800">{{$siswa->hp}}</span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Row-->
-                    <!--begin::Input group-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Orangtua/Wali</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 fv-row">
-                            <span class="fw-bold text-gray-800 fs-6">{{$siswa->nama_orangtua}}</span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Address</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8">
-                            <a href="#" class="fw-bold fs-6 text-gray-800 text-hover-primary">{{$siswa->alamat}}</a>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
+
+                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
 
 
+                    </form>
                 </div>
                 <!--end::Card body-->
             </div>

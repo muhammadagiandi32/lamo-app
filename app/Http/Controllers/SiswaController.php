@@ -86,9 +86,10 @@ class SiswaController extends Controller
         $user->nis = $request->nis;
         $user->role_id = 3;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt('123123123');
         $user->save();
 
+        //input dgn ini tidak perlu dgn fillable
         $siswa = new Siswa;
         $siswa->hp = $request->hp;
         $siswa->user_id = $user->id;
@@ -134,8 +135,32 @@ class SiswaController extends Controller
      */
     public function update(Request $request,  Siswa $siswa)
     {
-        //
-        return $request;
+        // $this->validate($request, [
+        //     'name' => ['required'],
+        // ]);
+
+        // $siswa->update($request->all());
+
+        // return $siswa;
+
+        // $user = User::find($siswa->id);
+        // $user->name = $request->name;
+        // $user->nis = $request->nis;
+        // $user->role_id = 3;
+        // $user->email = $request->email;
+        // $user->save();
+
+
+        $siswa = Siswa::find(1);
+
+        $siswa->hp = $request->hp;
+        $siswa->user_id = $request->id;
+        $siswa->nama_orangtua = $request->ortu;
+        $siswa->alamat = $request->alamat;
+        $siswa->kelas = $request->input('kelas', '');
+        $siswa->save();
+
+        return  redirect('siswas.dashboard')->with('success', 'Siswa updated');
     }
 
     /**

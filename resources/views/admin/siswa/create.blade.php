@@ -62,11 +62,6 @@
                     <label for="exampleFormControlInput1" class="required form-label">Kelas</label>
                     <input type="text" name="kelas" class="form-control form-control-solid" placeholder="" />
                 </div>
-                <div class="mb-10">
-                    <label for="exampleFormControlInput1" class="required form-label">Password</label>
-                    <input type="password" name="password" class="form-control form-control-solid" placeholder="" />
-                </div>
-
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

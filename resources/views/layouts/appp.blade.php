@@ -374,7 +374,7 @@ License: For each use you must have a valid license purchased only from above li
 										</div>
 
 										<div class="menu-item px-5">
-											<a href="#" class="menu-link px-5">Ubah Password</a>
+											<a href="{{route('password.edit')}}" class="menu-link px-5">Ubah Password</a>
 										</div>
 										<!--end::Menu item-->
 
@@ -5237,35 +5237,35 @@ License: For each use you must have a valid license purchased only from above li
 		});
 
 		// checkbox Tagihan Buku SISWA
-		$(document).ready(function(){
-		
-			$('#selectAll').click(function() {
-                $('input[type="checkbox"]').prop('checked', this.checked);
+		$(document).ready(function() {
 
-					if($('input[type="checkbox"]').is(':checked')){
-						
-								// $('input[name="id_siswa[]"]:checked').each(function() {
-								// 	var data_id = this.value;
-								// 	console.log(data_id);
-								// });
-							
-								// $.ajax({
-								// 	type: 'GET',
-								// 	url: "{{ url('/getDatasiswa') }}",
-								// 	headers: {
-								// 		'CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-								// 	},
-								// 	datatType: 'json',
-								// 	processData: false,
-								// 	contentType: false,
-								// 	success: function(data) {
-								// 		console.log(data);
-								// 	},
-								// 	error: function(xhr, ajaxOptions, thrownError) {
-								// 		console.log(xhr);
-								// 	},
-								// });
-							$("#tagihanBuku").append(`
+			$('#selectAll').click(function() {
+				$('input[type="checkbox"]').prop('checked', this.checked);
+
+				if ($('input[type="checkbox"]').is(':checked')) {
+
+					// $('input[name="id_siswa[]"]:checked').each(function() {
+					// 	var data_id = this.value;
+					// 	console.log(data_id);
+					// });
+
+					// $.ajax({
+					// 	type: 'GET',
+					// 	url: "{{ url('/getDatasiswa') }}",
+					// 	headers: {
+					// 		'CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					// 	},
+					// 	datatType: 'json',
+					// 	processData: false,
+					// 	contentType: false,
+					// 	success: function(data) {
+					// 		console.log(data);
+					// 	},
+					// 	error: function(xhr, ajaxOptions, thrownError) {
+					// 		console.log(xhr);
+					// 	},
+					// });
+					$("#tagihanBuku").append(`
 							<div class="card mt-5">
 								
 								<div class="card-header">
@@ -5282,7 +5282,7 @@ License: For each use you must have a valid license purchased only from above li
 													Input Nama Buku dan Jumlah Tagihan
 												</div>
 											</div>
-										</div>`+console.log()+`
+										</div>` + console.log() + `
 										<div class="form-group">
 											<label>Nama Tagihan</label>
 											<div class="input-group">
@@ -5310,11 +5310,11 @@ License: For each use you must have a valid license purchased only from above li
 								
 								<!--end::Form-->
 							</div>`);
-					}else{
-						$("#tagihanBuku").html(``);
-					}
-				
-            });
+				} else {
+					$("#tagihanBuku").html(``);
+				}
+
+			});
 			$.ajaxSetup({
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

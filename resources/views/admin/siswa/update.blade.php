@@ -33,8 +33,8 @@
         <!--begin::Body-->
         <div class="card-body py-3">
             <form action="{{ url('siswas/'.$siswa->id) }}" method="post">
+                @method("put")
                 @csrf
-                {{ method_field('PUT') }}
                 <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">Nama</label>
                     <input type="text" name="name" value="{{$siswa->users->name}}" class="form-control form-control-solid" />
