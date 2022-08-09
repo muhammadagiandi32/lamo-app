@@ -53,7 +53,7 @@
                                 @foreach ($data as $data)
                                     
                                 <tr>
-                                    <td>
+                                    <td @if($data->bulan_bayar  < now())class="bg-danger" @endif>
                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
                                             <input name="check[]" id="check" class="form-check-input widget-9-check" type="checkbox" value="{{ $data->id_tagihan }}">
                                             <input name="total" id="check" class="form-check-input widget-9-check" type="hidden" value="{{  $data->total }}">

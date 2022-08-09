@@ -107,13 +107,15 @@ class RoleSeeder extends Seeder
             'password' => bcrypt('123123123'),
             'role_id' => $role->id
         ]);
-        // Siswa
+
+
+        // Siswa Details
         Siswa::create(
             [
                 'user_id' => 3,
                 'hp' => 02156156,
                 'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kebangsatan No.16',
+                'alamat' => 'Jl. Kemerdekaan No.17',
                 'kelas' => 'VII'
             ]
         );
@@ -122,7 +124,7 @@ class RoleSeeder extends Seeder
                 'user_id' => 4,
                 'hp' => 02156156,
                 'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kebangsatan No.16',
+                'alamat' => 'Jl. Kemerdekaan No.17',
                 'kelas' => 'VII'
             ]
         );
@@ -131,7 +133,7 @@ class RoleSeeder extends Seeder
                 'user_id' => 5,
                 'hp' => 02156156,
                 'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kebangsatan No.16',
+                'alamat' => 'Jl. Kemerdekaan No.17',
                 'kelas' => 'VII'
             ]
         );
@@ -140,7 +142,7 @@ class RoleSeeder extends Seeder
                 'user_id' => 6,
                 'hp' => 02156156,
                 'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kebangsatan No.16',
+                'alamat' => 'Jl. Kemerdekaan No.17',
                 'kelas' => 'VII'
             ]
         );
@@ -149,7 +151,7 @@ class RoleSeeder extends Seeder
                 'user_id' => 7,
                 'hp' => 02156156,
                 'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kebangsatan No.16',
+                'alamat' => 'Jl. Kemerdekaan No.17',
                 'kelas' => 'VII'
             ]
         );
@@ -158,7 +160,7 @@ class RoleSeeder extends Seeder
                 'user_id' => 8,
                 'hp' => 02156156,
                 'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kebangsatan No.16',
+                'alamat' => 'Jl. Kemerdekaan No.17',
                 'kelas' => 'VII'
             ]
         );
