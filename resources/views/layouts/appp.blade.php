@@ -224,7 +224,7 @@ License: For each use you must have a valid license purchased only from above li
 							@endcan
 							@can('siswa')
 							<div class="menu-item">
-								<a class="menu-link {{ request()->is('siswas.dashboard') ? 'active' : ''}}" href="{{url('siswas.dashboard')}}" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+								<a class="menu-link {{ request()->is('dashboard.siswa') ? 'active' : ''}}" href="{{url('dashboard.siswa')}}" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 									<span class="menu-icon">
 										<!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
 										<span class="svg-icon svg-icon-2">
@@ -372,7 +372,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Menu separator-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5">
-											<a href="{{ url('/')}}" class="menu-link px-5">My Profile</a>
+											<a href="{{ route('siswa')}}" class="menu-link px-5">My Profile</a>
 										</div>
 
 										<div class="menu-item px-5">

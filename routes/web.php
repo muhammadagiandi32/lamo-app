@@ -25,9 +25,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('account/password', [App\Http\Controllers\Account\PasswordController::class, 'edit'])->name('password.edit');
 Route::patch('account/password', [App\Http\Controllers\Account\PasswordController::class, 'update'])->name('password.edit');
 
+//siswa and user
 Route::resource('/siswas', App\Http\Controllers\SiswaController::class);
+Route::get('/dashboard.siswa', [App\Http\Controllers\SiswaController::class, 'dashboard'])->name('siswa');
 Route::resource('/users', App\Http\Controllers\UserController::class);
-Route::get('/siswas.dashboard', [App\Http\Controllers\SiswaController::class, 'dashboard']);
+
+
 Route::post('/tagihanBuku', [App\Http\Controllers\SiswaController::class, 'tagihanBuku']);
 Route::get('/getDatasiswa', [App\Http\Controllers\SiswaController::class, 'getDatasiswa']);
 // Payment Controller

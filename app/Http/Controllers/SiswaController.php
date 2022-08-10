@@ -135,32 +135,33 @@ class SiswaController extends Controller
      */
     public function update(Request $request,  Siswa $siswa)
     {
-        // $this->validate($request, [
-        //     'name' => ['required'],
-        // ]);
+        request()->validate([
+            'name' => 'required',
+            'alamat' => 'required',
+        ]);
 
         // $siswa->update($request->all());
 
         // return $siswa;
 
-        // $user = User::find($siswa->id);
-        // $user->name = $request->name;
-        // $user->nis = $request->nis;
-        // $user->role_id = 3;
-        // $user->email = $request->email;
-        // $user->save();
+        $user = User::find($siswa->id);
+        $user->name = $request->name;
+        $user->nis = $request->nis;
+        $user->role_id = 3;
+        $user->email = $request->email;
 
 
-        $siswa = Siswa::find(1);
-
+        $siswa = Siswa::find($siswa->user_id);
+        
         $siswa->hp = $request->hp;
         $siswa->user_id = $request->id;
         $siswa->nama_orangtua = $request->ortu;
         $siswa->alamat = $request->alamat;
-        $siswa->kelas = $request->input('kelas', '');
+        $siswa->kelas = $request->kelas;
         $siswa->save();
+        $user->save();
 
-        return  redirect('siswas.dashboard')->with('success', 'Siswa updated');
+        return  redirect('dashboard.siswa')->with('success', 'Siswa updated');
     }
 
     /**
