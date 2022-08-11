@@ -64,201 +64,102 @@ class RoleSeeder extends Seeder
             'nama' => 'siswa'
         ]);
 
-        // user siswa
-        User::create([
-            'name' => 'Siswa3',
-            'nik' => '53535353',
-            'email' => 'siswa3@gmail.com',
-            'password' => bcrypt('123123123'),
-            'role_id' => $role->id
-        ]);
-        User::create([
-            'name' => 'Siswa4',
-            'nik' => '53535353',
-            'email' => 'siswa4@gmail.com',
-            'password' => bcrypt('123123123'),
-            'role_id' => $role->id
-        ]);
-        User::create([
-            'name' => 'siswa5',
-            'nik' => '53535353',
-            'email' => 'siswa5@gmail.com',
-            'password' => bcrypt('123123123'),
-            'role_id' => $role->id
-        ]);
-        User::create([
-            'name' => 'siswa6',
-            'nik' => '53535353',
-            'email' => 'siswa6@gmail.com',
-            'password' => bcrypt('123123123'),
-            'role_id' => $role->id
-        ]);
-        User::create([
-            'name' => 'siswa7',
-            'nik' => '53535353',
-            'email' => 'siswa7@gmail.com',
-            'password' => bcrypt('123123123'),
-            'role_id' => $role->id
-        ]);
-        User::create([
-            'name' => 'siswa8',
-            'nik' => '53535353',
-            'email' => 'siswa8@gmail.com',
-            'password' => bcrypt('123123123'),
-            'role_id' => $role->id
-        ]);
-
-
-        // Siswa Details
-        Siswa::create(
-            [
-                'user_id' => 3,
-                'hp' => 02156156,
-                'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kemerdekaan No.17',
-                'kelas' => 'VII'
-            ]
-        );
-        Siswa::create(
-            [
-                'user_id' => 4,
-                'hp' => 02156156,
-                'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kemerdekaan No.17',
-                'kelas' => 'VII'
-            ]
-        );
-        Siswa::create(
-            [
-                'user_id' => 5,
-                'hp' => 02156156,
-                'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kemerdekaan No.17',
-                'kelas' => 'VII'
-            ]
-        );
-        Siswa::create(
-            [
-                'user_id' => 6,
-                'hp' => 02156156,
-                'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kemerdekaan No.17',
-                'kelas' => 'VII'
-            ]
-        );
-        Siswa::create(
-            [
-                'user_id' => 7,
-                'hp' => 02156156,
-                'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kemerdekaan No.17',
-                'kelas' => 'VII'
-            ]
-        );
-        Siswa::create(
-            [
-                'user_id' => 8,
-                'hp' => 02156156,
-                'nama_orangtua' => 'ccd',
-                'alamat' => 'Jl. Kemerdekaan No.17',
-                'kelas' => 'VII'
-            ]
-        );
-        //tagihan 1
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-01-01',
-                'total' => 200000
-            ]
-        );
-        //2
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-02-01',
-                'total' => 200000
-            ]
-        );
-        //3
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-03-01',
-                'total' => 200000
-            ]
-        );
-        //4
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-04-01',
-                'total' => 200000
-            ]
-        );
-        //5
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-05-01',
-                'total' => 200000
-            ]
-        );
-        //6
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-06-01',
-                'total' => 200000
-            ]
-        );
-        //7
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-07-01',
-                'total' => 200000
-            ]
-        );
-        //8
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-08-01',
-                'total' => 200000
-            ]
-        );
-        //9
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-09-01',
-                'total' => 200000
-            ]
-        );
-        //10
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-10-01',
-                'total' => 200000
-            ]
-        );
-        //11
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-11-01',
-                'total' => 200000
-            ]
-        );
-        //12
-        Tagihan::create(
-            [
-                'id_siswa' => '1',
-                'bulan_bayar' => '2022-12-01',
-                'total' => 200000
-            ]
-        );
+       
+        // //tagihan 1
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-01-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //2
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-02-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //3
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-03-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //4
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-04-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //5
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-05-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //6
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-06-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //7
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-07-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //8
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-08-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //9
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-09-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //10
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-10-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //11
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-11-01',
+        //         'total' => 200000
+        //     ]
+        // );
+        // //12
+        // Tagihan::create(
+        //     [
+        //         'id_siswa' => '1',
+        //         'bulan_bayar' => '2022-12-01',
+        //         'total' => 200000
+        //     ]
+        // );
     }
 }
