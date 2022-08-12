@@ -205,7 +205,7 @@
                     </div>
                     <!--end::Card title-->
                     <!--begin::Action-->
-                    <a href="{{ url('siswas/'.$siswa->id.'/edit') }}" class="btn btn-primary align-self-center">Edit
+                    <a href="{{ url('siswas/'. Crypt::encryptString($siswa->id).'/edit') }}" class="btn btn-primary align-self-center">Edit
                         Profile</a>
                     <!--end::Action-->
                 </div>
@@ -219,7 +219,9 @@
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
-                            <span class="fw-bolder fs-6 text-gray-800">{{Auth::user()->name}}</span>
+                            <span class="fw-bolder fs-6 text-gray-800">{{$siswa->name}}</span>
+                            <br>
+                            <span class="fw-bolder fs-6 text-gray-800">{{Auth::user()->id}}</span>
                         </div>
                         <!--end::Col-->
                     </div>

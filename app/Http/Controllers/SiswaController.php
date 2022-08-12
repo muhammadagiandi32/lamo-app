@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\TagihanBuku;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class SiswaController extends Controller
 {
@@ -52,7 +53,7 @@ class SiswaController extends Controller
     public function dashboard()
     {
         $siswa = User::select('siswas.*', 'users.*')
-            ->join('siswas', 'siswas.user_id', 'users.id')
+            ->join('siswas', 'users.id', 'siswas.user_id')
             ->where('users.id', '=', auth()->id())
             ->first();
 
@@ -120,8 +121,15 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Siswa $siswa)
+    public function edit()
     {
+        $siswa = User::select('*')
+            ->leftjoin('siswas', 'siswas.user_id',  'users.id')
+            ->where('siswas.user_id', '=', auth()->id())
+            ->first();
+
+
+        // return $siswa;
 
         return view('admin.siswa.update', compact('siswa'));
     }
@@ -135,32 +143,52 @@ class SiswaController extends Controller
      */
     public function update(Request $request,  Siswa $siswa)
     {
+        // DB::enableQueryLog();
+
+        // return auth()->id();
         request()->validate([
             'name' => 'required',
             'alamat' => 'required',
         ]);
 
+
+        DB::table('users')
+        ->where('id', auth()->id())
+            ->update([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+
+
+        DB::table('siswas')
+        ->where(
+            'user_id',
+            $siswa->user_id
+        )
+        ->update(['alamat' => $request->alamat]);
         // $siswa->update($request->all());
 
-        // return $siswa;
+        // return $siswa->id;
 
-        $user = User::find($siswa->id);
-        $user->name = $request->name;
-        $user->nis = $request->nis;
-        $user->role_id = 3;
-        $user->email = $request->email;
+        // $user = User::find($siswa->id);
+        // $user->name = $request->name;
+        // $user->nis = $request->nis;
+        // $user->role_id = 3;
+        // $user->email = $request->email;
 
 
-        $siswa = Siswa::find($siswa->user_id);
+        // $siswa = Siswa::find($siswa->user_id);
+
+        // $siswa->hp = $request->hp;
+        // $siswa->user_id = $request->id;
+        // $siswa->nama_orangtua = $request->ortu;
+        // $siswa->alamat = $request->alamat;
+        // $siswa->kelas = $request->kelas;
+        // $siswa->save();
+        // $user->save();
+
+        // dd(DB::getQueryLog());
         
-        $siswa->hp = $request->hp;
-        $siswa->user_id = $request->id;
-        $siswa->nama_orangtua = $request->ortu;
-        $siswa->alamat = $request->alamat;
-        $siswa->kelas = $request->kelas;
-        $siswa->save();
-        $user->save();
-
         return  redirect('dashboard.siswa')->with('success', 'Siswa updated');
     }
 

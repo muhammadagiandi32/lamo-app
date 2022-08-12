@@ -108,6 +108,54 @@ License: For each use you must have a valid license purchased only from above li
 									<span class="menu-section text-muted text-uppercase fs-8 ls-1">Dashboard</span>
 								</div>
 							</div>
+							@can('ketua')
+							<div class="menu-item">
+								<a class="menu-link {{ request()->is('tata_usaha') ? 'active' : ''}}" href="{{url('tata_usaha')}}" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon">
+										<!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
+										<span class="svg-icon svg-icon-2">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
+												<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
+												<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
+												<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
+											</svg>
+										</span>
+										<!--end::Svg Icon-->
+									</span>
+									<span class="menu-title">Tata Usaha</span>
+								</a>
+							</div>
+							<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+								<span class="menu-link">
+									<span class="menu-icon">
+										<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+										<i class="bi bi-graph-down fs-1x"></i>
+										<!--end::Svg Icon-->
+									</span>
+									<span class="menu-title">Laporan</span>
+									<span class="menu-arrow"></span>
+								</span>
+								<div class="menu-sub menu-sub-accordion menu-active-bg">
+									<div class="menu-item">
+										<a class="menu-link" href="/metronic8/demo1/../demo1/account/overview.html">
+											<span class="menu-bullet">
+												<span class="bullet bullet-dot"></span>
+											</span>
+											<span class="menu-title">Laporan Pembayaran SPP</span>
+										</a>
+									</div>
+									<div class="menu-item">
+										<a class="menu-link" href="/metronic8/demo1/../demo1/account/settings.html">
+											<span class="menu-bullet">
+												<span class="bullet bullet-dot"></span>
+											</span>
+											<span class="menu-title">Laporan Pembayaran Buku</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							@endcan
 							@can('tu')
 							<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
 								<span class="menu-link">
@@ -259,7 +307,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="menu-sub menu-sub-accordion menu-active-bg">
 									<div class="menu-item">
 										<a class="menu-link" href="{{ url('/showPayment').'/'.Crypt::encrypt(Auth::user()->id)}}">
-										{{-- <a class="menu-link" href="{{ url('/showPayment').Crypt::encrypt(Auth::user()->id)}}"> --}}
+											{{-- <a class="menu-link" href="{{ url('/showPayment').Crypt::encrypt(Auth::user()->id)}}"> --}}
 
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
@@ -5136,9 +5184,9 @@ License: For each use you must have a valid license purchased only from above li
 									transaction_time: result.transaction_time
 								}
 								console.log(CallbackStatus(notifications));
-								setTimeout(function(){  
-									location.reload();  
-								},100);  
+								setTimeout(function() {
+									location.reload();
+								}, 100);
 
 							},
 							// Optional
@@ -5157,9 +5205,9 @@ License: For each use you must have a valid license purchased only from above li
 									transaction_time: result.transaction_time
 								}
 								console.log(CallbackStatus(notifications));
-								setTimeout(function(){  
-									location.reload();  
-								},100);  
+								setTimeout(function() {
+									location.reload();
+								}, 100);
 
 							},
 							// Optional
@@ -5178,9 +5226,9 @@ License: For each use you must have a valid license purchased only from above li
 									transaction_time: result.transaction_time
 								}
 								console.log(CallbackStatus(notifications));
-								setTimeout(function(){  
-									location.reload();  
-								},100);  
+								setTimeout(function() {
+									location.reload();
+								}, 100);
 
 							}
 						});

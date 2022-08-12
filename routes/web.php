@@ -30,6 +30,9 @@ Route::resource('/siswas', App\Http\Controllers\SiswaController::class);
 Route::get('/dashboard.siswa', [App\Http\Controllers\SiswaController::class, 'dashboard'])->name('siswa');
 Route::resource('/users', App\Http\Controllers\UserController::class);
 
+//tu
+Route::resource('/tata_usaha', App\Http\Controllers\TataUsahaController::class);
+
 
 Route::post('/tagihanBuku', [App\Http\Controllers\SiswaController::class, 'tagihanBuku']);
 Route::get('/getDatasiswa', [App\Http\Controllers\SiswaController::class, 'getDatasiswa']);
