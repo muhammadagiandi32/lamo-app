@@ -32,7 +32,7 @@
         <!--end::Header-->
         <!--begin::Body-->
         <div class="card-body py-3">
-            <form action="{{ url('tata_usaha') }}" method="post">
+            <form action="{{ route('tata_usaha.store') }}" method="post">
                 @csrf
                 <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">Nama</label>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">NIK</label>
-                    <input type="text" name="nis" class="form-control form-control-solid" />
+                    <input type="text" name="nik" class="form-control form-control-solid" />
                 </div>
                 <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">Email</label>

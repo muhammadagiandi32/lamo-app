@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Account;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
@@ -41,5 +42,17 @@ class PasswordController extends Controller
         } else {
             return back()->withErrors(['old_password' => 'Make sure you fill your current password']);
         }
+    }
+
+    public function reset($id)
+    {
+
+        $reset = User::find($id);
+
+        $reset->password = bcrypt('bacot123');
+        $reset->update();
+
+        return redirect('siswas')->with('reset', 'Password has ben reset ');
+        // return $reset;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TataUsaha;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TataUsahaController extends Controller
 {
@@ -15,7 +16,14 @@ class TataUsahaController extends Controller
      */
     public function index()
     {
-        return view('admin.tata-usaha.index');
+        $tu = TataUsaha::select('tata_usahas.*', 'tata_usahas.id as id_tu', 'users.*')
+        ->join('users', 'tata_usahas.user_id', 'users.id')
+        ->where('role_id', '=', 2)
+        ->get();
+
+        // return $tu;
+
+        return view('admin.tata-usaha.index', compact('tu'));
     }
 
     /**
@@ -39,7 +47,7 @@ class TataUsahaController extends Controller
         // return $request;
         $user = new User;
         $user->name = $request->name;
-        $user->nis = $request->nik;
+        $user->nik = $request->nik;
         $user->role_id = 2;
         $user->email = $request->email;
         $user->password = bcrypt('123123123');
@@ -61,9 +69,9 @@ class TataUsahaController extends Controller
      * @param  \App\Models\TataUsaha  $tataUsaha
      * @return \Illuminate\Http\Response
      */
-    public function show(TataUsaha $tataUsaha)
+    public function show($id)
     {
-        //
+        // return $id;
     }
 
     /**
@@ -72,9 +80,16 @@ class TataUsahaController extends Controller
      * @param  \App\Models\TataUsaha  $tataUsaha
      * @return \Illuminate\Http\Response
      */
-    public function edit(TataUsaha $tataUsaha)
+    public function edit($id)
     {
-        //
+        // return $id . '&nbsp; bacot';
+        // $tu = User::select('*')
+        //     ->leftjoin('tata_usahas', 'tata_usahas.user_id',  'users.id')
+        //     ->where('tata_usahas.user_id', '=', auth()->id())
+        //     ->first();
+
+        // return view('admin.tata-usaha.update', compact('tu'));
+
     }
 
     /**
@@ -95,8 +110,15 @@ class TataUsahaController extends Controller
      * @param  \App\Models\TataUsaha  $tataUsaha
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TataUsaha $tataUsaha)
+    public function destroy($id)
     {
-        //
+        $data = DB::table('users')
+        ->leftjoin('tata_usahas', 'tata_usahas.user_id',  'users.id')
+        ->where('users.id', $id);
+        DB::table('tata_usahas')->where('user_id', $id)->delete();
+        $data->delete();
+
+        return redirect()->route('tata_usaha.index')->with('delete', 'Tata Usaha has been deleted');
+
     }
 }

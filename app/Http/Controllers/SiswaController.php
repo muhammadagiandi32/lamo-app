@@ -17,10 +17,11 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::select('siswas.*', 'siswas.id as id_siswa', 'users.*')
-            ->join('users', 'siswas.user_id', 'users.id')
+        $siswas = Siswa::select('*', 'siswas.id as id_siswa')
+        ->leftjoin('users', 'siswas.user_id', 'users.id')
             ->where('role_id', '=', 3)
-            ->get();
+        ->paginate(15);
+            // ->get();
 
         // return $siswas;
 
@@ -143,9 +144,7 @@ class SiswaController extends Controller
      */
     public function update(Request $request,  Siswa $siswa)
     {
-        // DB::enableQueryLog();
 
-        // return auth()->id();
         request()->validate([
             'name' => 'required',
             'alamat' => 'required',
@@ -168,7 +167,6 @@ class SiswaController extends Controller
         ->update(['alamat' => $request->alamat]);
         // $siswa->update($request->all());
 
-        // return $siswa->id;
 
         // $user = User::find($siswa->id);
         // $user->name = $request->name;
@@ -200,6 +198,6 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $id->delete();
     }
 }
