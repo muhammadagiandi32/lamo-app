@@ -92,7 +92,7 @@
                                     <th class="min-w-100px">#</th>
                                     <th class="min-w-150px">Nama</th>
                                     <th class="min-w-140px">HP</th>
-                                    <th class="min-w-120px">Ortu</th>
+                                    <th class="min-w-120px">Nama Orangtua</th>
                                     <th class="min-w-120px">Alamat</th>
                                     <th class="min-w-120px">Kelas</th>
                                     <th class="min-w-100px text-end">Actions</th>
@@ -106,7 +106,7 @@
 
 
                                 <tr>
-                                    <td><span style="width: 20px;"><label class="checkbox checkbox-single"><input id="test" name="id_siswa[]" type="checkbox" value="{{ $siswa->id_siswa }}">&nbsp;<span></span></label></span></td>
+                                    <td><span style="width: 20px;"><label class="checkbox checkbox-single"><input id="checkBoxBuku" name="id_siswa[]" type="checkbox" value="{{ $siswa->id_siswa }}">&nbsp;<span></span></label></span></td>
                                     <td>
                                         <a href="#" class="text-dark fw-bold text-hover-primary fs-6">{{$key+1}}</a>
                                     </td>

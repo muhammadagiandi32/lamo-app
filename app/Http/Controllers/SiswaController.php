@@ -18,16 +18,27 @@ class SiswaController extends Controller
     public function index()
     {
         $siswas = Siswa::select('*', 'siswas.id as id_siswa')
-        ->leftjoin('users', 'siswas.user_id', 'users.id')
+            ->leftjoin('users', 'siswas.user_id', 'users.id')
             ->where('role_id', '=', 3)
-        ->paginate(15);
-            // ->get();
+            ->paginate(15);
+        // ->get();
 
         // return $siswas;
 
         return view('admin.siswa.index', compact('siswas'));
     }
+    public function getDatasiswa()
+    {
+        $siswas = Siswa::select('*', 'siswas.id as id_siswa')
+            ->leftjoin('users', 'siswas.user_id', 'users.id')
+            ->where('role_id', '=', 3)
+            ->paginate(15);
+        // ->get();
 
+        // return $siswas;
+
+        return view('admin.siswa.index', compact('siswas'));
+    }
 
     public function tagihanBuku(Request $request)
     {
@@ -46,7 +57,7 @@ class SiswaController extends Controller
         }
         $return = TagihanBuku::insert($arr);
         if ($return) {
-            return response()->json($arr);
+            return response()->json(['respon' => 'success']);
         } else {
             return response()->json('gagal');
         }
@@ -152,7 +163,7 @@ class SiswaController extends Controller
 
 
         DB::table('users')
-        ->where('id', auth()->id())
+            ->where('id', auth()->id())
             ->update([
                 'name' => $request->name,
                 'email' => $request->email
@@ -160,11 +171,11 @@ class SiswaController extends Controller
 
 
         DB::table('siswas')
-        ->where(
-            'user_id',
-            $siswa->user_id
-        )
-        ->update(['alamat' => $request->alamat]);
+            ->where(
+                'user_id',
+                $siswa->user_id
+            )
+            ->update(['alamat' => $request->alamat]);
         // $siswa->update($request->all());
 
 
@@ -186,7 +197,7 @@ class SiswaController extends Controller
         // $user->save();
 
         // dd(DB::getQueryLog());
-        
+
         return  redirect('dashboard.siswa')->with('success', 'Siswa updated');
     }
 

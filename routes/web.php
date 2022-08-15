@@ -46,3 +46,7 @@ Route::resource('/payment', App\Http\Controllers\PaymentController::class);
 Route::post('/snaptoken', [App\Http\Controllers\PaymentController::class, 'snap_token']);
 Route::post('/statusPayment', [App\Http\Controllers\PaymentController::class, 'statusPayment']);
 Route::get('/showPayment/{id}', [App\Http\Controllers\PaymentController::class, 'showPayment']);
+
+
+// Report
+Route::get('/report', [App\Http\Controllers\Report::class, 'index']);
