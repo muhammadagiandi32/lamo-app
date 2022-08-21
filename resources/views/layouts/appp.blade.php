@@ -25,7 +25,7 @@ License: For each use you must have a valid license purchased only from above li
 	<meta property="og:url" content="https://keenthemes.com/metronic" />
 	<meta property="og:site_name" content="Keenthemes | Metronic" />
 	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
-<script src="http://www.google.com/recaptcha/api.js?onload=myCallBack&render=explicit" async defer></script>
+	<script src="http://www.google.com/recaptcha/api.js?onload=myCallBack&render=explicit" async defer></script>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
@@ -43,7 +43,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Global Stylesheets Bundle(used by all pages)-->
 	<link href="{{ asset('assets/dist/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/dist/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-	
+
 	<!--end::Global Stylesheets Bundle-->
 	<!--Begin::Google Tag Manager -->
 	{{-- <script>
@@ -78,8 +78,8 @@ License: For each use you must have a valid license purchased only from above li
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
 					{{-- <a href="/metronic8/demo1/../demo1/index.html"> --}}
-						{{-- <img alt="Logo" src="{{ asset('assets/dist/assets/media/logos/logo-1-dark.svg')}}" class="h-25px logo" /> --}}
-						<h1 class="text-hover-primary">{{ Auth::user()->name; }}</h1>
+					{{-- <img alt="Logo" src="{{ asset('assets/dist/assets/media/logos/logo-1-dark.svg')}}" class="h-25px logo" /> --}}
+					<h1 class="text-hover-primary">{{ Auth::user()->name; }}</h1>
 					{{-- </a> --}}
 					<!--end::Logo-->
 					<!--begin::Aside toggler-->
@@ -526,8 +526,8 @@ License: For each use you must have a valid license purchased only from above li
 		<!--end::Page-->
 	</div>
 	<!--end::Root-->
-	
-	
+
+
 	<!--end::Engage drawers-->
 	<!--begin::Scrolltop-->
 	<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
@@ -542,9 +542,9 @@ License: For each use you must have a valid license purchased only from above li
 	</div>
 	<!--end::Scrolltop-->
 	<!--begin::Modals-->
-	
-	
-	
+
+
+
 	<!--end::Modals-->
 	<!--begin::Javascript-->
 	<script>
@@ -617,10 +617,10 @@ License: For each use you must have a valid license purchased only from above li
 				applyClass: 'btn-primary',
 				cancelClass: 'btn-secondary'
 			}, function(start, end, label) {
-				$('#kt_daterangepicker_2 .form-control').val( start.format('YYYY-MM-DD') + ' / ' + end.format('YYYY-MM-DD'));
+				$('#kt_daterangepicker_2 .form-control').val(start.format('YYYY-MM-DD') + ' / ' + end.format('YYYY-MM-DD'));
 			});
 
-			
+
 			$.ajaxSetup({
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -795,7 +795,7 @@ License: For each use you must have a valid license purchased only from above li
 
 				if ($('input[type="checkbox"]').is(':checked')) {
 
-						$("#tagihanBuku").append(`
+					$("#tagihanBuku").append(`
 							<div class="card mt-5">
 								
 								<div class="card-header">
@@ -865,11 +865,11 @@ License: For each use you must have a valid license purchased only from above li
 					contentType: false,
 					data: new FormData(form),
 					success: function(data) {
-						if(data.respon == 'success'){
+						if (data.respon == 'success') {
 							Swal.fire("Menambahkan Tagihan Buku Berhasil", "Silahkan Klik OK!", "success");
 							$('[type=checkbox]').prop("checked", false);
 							$("#tagihanBuku").html(``);
-						}else{
+						} else {
 							Swal.fire("Good job!", "You clicked the button!", "error");
 						}
 					},
@@ -879,12 +879,12 @@ License: For each use you must have a valid license purchased only from above li
 				});
 			});
 
-		
+
 		});
 	</script>
 
 	<script>
-		$(document).ready(function(){
+		$(document).ready(function() {
 			$.ajaxSetup({
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -905,7 +905,11 @@ License: For each use you must have a valid license purchased only from above li
 					contentType: false,
 					data: new FormData(form),
 					success: function(data) {
-						console.log(data);
+						// console.log(data);
+						$.each(data, function(index, value) {
+							console.log('The value at arr[' + index + '] is: ' + value);
+						});
+
 					},
 					error: function(xhr, ajaxOptions, thrownError) {
 						console.log(xhr);

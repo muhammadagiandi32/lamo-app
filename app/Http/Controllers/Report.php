@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Str;
 class Report extends Controller
 {
     //
@@ -23,6 +23,13 @@ class Report extends Controller
 
     public function getDataReport(Request $request)
     {
-        return response()->json(['snaptoken' => $request]);
+        $date1 = Str::substr($request->date, 0, 10);
+        $date2 = Str::substr($request->date, 13);
+        $type = $request->type;
+
+        $data =  DB::table('tagihans')->where('status', '=', $type)->whereBetween('bulan_bayar', [$date1, $date2])->get();
+        // DB::enableQueryLog();
+        // return dd($data);
+        return response()->json(['data' => $data]);
     }
 }
