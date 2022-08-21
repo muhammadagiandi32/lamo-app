@@ -24,7 +24,10 @@ License: For each use you must have a valid license purchased only from above li
 	<meta property="og:title" content="Metronic - Bootstrap 5 HTML, VueJS, React, Angular &amp; Laravel Admin Dashboard Theme" />
 	<meta property="og:url" content="https://keenthemes.com/metronic" />
 	<meta property="og:site_name" content="Keenthemes | Metronic" />
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+<script src="http://www.google.com/recaptcha/api.js?onload=myCallBack&render=explicit" async defer></script>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
 	<link rel="shortcut icon" href="{{ asset('assets/dist/assets/media/logos/favicon.ico')}}" />
 	<!--begin::Fonts-->
@@ -43,7 +46,7 @@ License: For each use you must have a valid license purchased only from above li
 	
 	<!--end::Global Stylesheets Bundle-->
 	<!--Begin::Google Tag Manager -->
-	<script>
+	{{-- <script>
 		(function(w, d, s, l, i) {
 			w[l] = w[l] || [];
 			w[l].push({
@@ -57,7 +60,7 @@ License: For each use you must have a valid license purchased only from above li
 			j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
 			f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-5FS8GGP');
-	</script>
+	</script> --}}
 	<!--End::Google Tag Manager -->
 </head>
 <!--end::Head-->
@@ -134,21 +137,21 @@ License: For each use you must have a valid license purchased only from above li
 								</span>
 								<div class="menu-sub menu-sub-accordion menu-active-bg">
 									<div class="menu-item">
-										<a class="menu-link" href="/metronic8/demo1/../demo1/account/overview.html">
+										<a class="menu-link" href="{{ url('/report') }}">
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
 											</span>
-											<span class="menu-title">Laporan Pembayaran SPP</span>
+											<span class="menu-title">Laporan SPP</span>
 										</a>
 									</div>
-									<div class="menu-item">
+									{{-- <div class="menu-item">
 										<a class="menu-link" href="/metronic8/demo1/../demo1/account/settings.html">
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
 											</span>
 											<span class="menu-title">Laporan Pembayaran Buku</span>
 										</a>
-									</div>
+									</div> --}}
 								</div>
 							</div>
 							@endcan
@@ -609,6 +612,15 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-S92WPmjAuJaARJin"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$('#kt_daterangepicker_2').daterangepicker({
+				buttonClasses: ' btn',
+				applyClass: 'btn-primary',
+				cancelClass: 'btn-secondary'
+			}, function(start, end, label) {
+				$('#kt_daterangepicker_2 .form-control').val( start.format('YYYY-MM-DD') + ' / ' + end.format('YYYY-MM-DD'));
+			});
+
+			
 			$.ajaxSetup({
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -783,28 +795,7 @@ License: For each use you must have a valid license purchased only from above li
 
 				if ($('input[type="checkbox"]').is(':checked')) {
 
-					// $('input[name="id_siswa[]"]:checked').each(function() {
-					// 	var data_id = this.value;
-					// 	console.log(data_id);
-					// });
-
-					// $.ajax({
-					// 	type: 'GET',
-					// 	url: "{{ url('/getDatasiswa') }}",
-					// 	headers: {
-					// 		'CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					// 	},
-					// 	datatType: 'json',
-					// 	processData: false,
-					// 	contentType: false,
-					// 	success: function(data) {
-					// 		console.log(data);
-					// 	},
-					// 	error: function(xhr, ajaxOptions, thrownError) {
-					// 		console.log(xhr);
-					// 	},
-					// });
-					$("#tagihanBuku").append(`
+						$("#tagihanBuku").append(`
 							<div class="card mt-5">
 								
 								<div class="card-header">
@@ -888,7 +879,40 @@ License: For each use you must have a valid license purchased only from above li
 				});
 			});
 
+		
 		});
+	</script>
+
+	<script>
+		$(document).ready(function(){
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			$('#report').on('submit', function(event) {
+				event.preventDefault();
+				var form = this;
+				// console.log('data');
+				$.ajax({
+					type: 'POST',
+					url: '/getDataReport',
+					headers: {
+						'CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					},
+					datatType: 'json',
+					processData: false,
+					contentType: false,
+					data: new FormData(form),
+					success: function(data) {
+						console.log(data);
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						console.log(xhr);
+					},
+				});
+			});
+		})
 	</script>
 </body>
 <!--end::Body-->

@@ -2,7 +2,7 @@
 
 @section('content')
 <!--begin::Toolbar-->
-<form id="tagihan_buku" method="POST" action="{{ url('/tagihanBuku') }}" class="form">
+
     @csrf
     <div class="toolbar" id="kt_toolbar">
         <!--begin::Container-->
@@ -59,6 +59,8 @@
         <div class="card mb-5 mb-xl-8">
 
 										<!--begin::Card-->
+                                        <form action="{{ url('/getDataReport') }}" id="getDataReport" method="POST">
+                                            @csrf
 										<div class="card mb-7">
 											<!--begin::Card body-->
 											<div class="card-body">
@@ -74,12 +76,12 @@
 															</svg>
 														</span>
 														<!--end::Svg Icon-->
-														<input type="text" class="form-control form-control-solid ps-10" name="search" value="" placeholder="Search">
+														{{-- <input type="text" class="form-control form-control-solid ps-10" name="search" value="" placeholder="Search"> --}}
 													</div>
 													<!--end::Input group-->
 													<!--begin:Action-->
 													<div class="d-flex align-items-center">
-														<button type="submit" class="btn btn-primary me-5">Search</button>
+														
 														<a id="kt_horizontal_search_advanced_link" class="btn btn-link" data-bs-toggle="collapse" href="#kt_advanced_search_form" aria-expanded="false">Hide Advanced Search</a>
 													</div>
 													<!--end:Action-->
@@ -94,56 +96,39 @@
 													<div class="row g-8 mb-8" data-select2-id="select2-data-134-a3kz">
 														<!--begin::Col-->
 														<div class="col-xxl-7">
-															<label class="fs-6 form-label fw-bold text-dark">Tags</label>
-															<tags class="tagify form-control form-control-solid" tabindex="-1">
-            <tag title="products" spellcheck="false" tabindex="-1" class="tagify__tag tagify--noAnim" value="products" contenteditable="false"><x title="" class="tagify__tag__removeBtn" role="button" aria-label="remove tag"></x><div><span class="tagify__tag-text">products</span></div></tag><tag title="users" spellcheck="false" tabindex="-1" class="tagify__tag tagify--noAnim" value="users" contenteditable="false"><x title="" class="tagify__tag__removeBtn" role="button" aria-label="remove tag"></x><div><span class="tagify__tag-text">users</span></div></tag><tag title="events" spellcheck="false" tabindex="-1" class="tagify__tag tagify--noAnim" value="events" contenteditable="false"><x title="" class="tagify__tag__removeBtn" role="button" aria-label="remove tag"></x><div><span class="tagify__tag-text">events</span></div></tag><span tabindex="0" data-placeholder="​" aria-placeholder="" class="tagify__input" role="textbox" aria-autocomplete="both" aria-multiline="false" contenteditable=""></span>
-                ​
-        </tags><input type="text" class="form-control form-control form-control-solid" name="tags" value="products, users, events" tabindex="-1">
-														</div>
+                                                            <div class="form-group row">
+																	<label class="fs-6 form-label fw-bold text-dark">Periode</label>
+                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                    <div class='input-group' id='kt_daterangepicker_2'>
+                                                                        <input type='text' name="date" class="form-control" readonly  placeholder="Select date range"/>
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text"><i class="la la-calendar-check-o"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>	
+                                                        
+                                                        </div>
 														<!--end::Col-->
 														<!--begin::Col-->
 														<div class="col-xxl-5" data-select2-id="select2-data-133-w8ao">
 															<!--begin::Row-->
 															<div class="row g-8" data-select2-id="select2-data-132-1u2n">
 																<!--begin::Col-->
-																<div class="col-lg-6" data-select2-id="select2-data-131-5den">
+																<div class="col-lg-12" data-select2-id="select1-data-131-5den">
 																	<label class="fs-6 form-label fw-bold text-dark">Team Type</label>
 																	<!--begin::Select-->
-																	<select class="form-select form-select-solid select2-hidden-accessible" data-control="select2" data-placeholder="In Progress" data-hide-search="true" data-select2-id="select2-data-10-o460" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
+																	<select name="type" class="form-select form-select-solid select2-hidden-accessible" data-control="select2" data-placeholder="In Progress" data-hide-search="true" data-select2-id="select2-data-10-o460" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
 																		<option value="" data-select2-id="select2-data-137-l9de"></option>
-																		<option value="1" data-select2-id="select2-data-138-tsvc">Not started</option>
-																		<option value="2" selected="selected" data-select2-id="select2-data-12-j4ge">In Progress</option>
-																		<option value="3" data-select2-id="select2-data-139-klsn">Done</option>
-																	</select><span class="select2 select2-container select2-container--bootstrap5 select2-container--below" dir="ltr" data-select2-id="select2-data-11-8xtk" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-x4p0-container" aria-controls="select2-x4p0-container"><span class="select2-selection__rendered" id="select2-x4p0-container" role="textbox" aria-readonly="true" title="In Progress">In Progress</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+																		<option value="1" data-select2-id="select2-data-138-tsvc">Sudah Lunas</option>
+																		<option value="2" selected="selected" data-select2-id="select2-data-12-j4ge">Belum Lunas</option>
+																		{{-- <option value="3" data-select2-id="select2-data-139-klsn">Done</option> --}}
+																	</select>
 																	<!--end::Select-->
 																</div>
 																<!--end::Col-->
 																<!--begin::Col-->
-																<div class="col-lg-6">
-																	<label class="fs-6 form-label fw-bold text-dark">Select Group</label>
-																	<!--begin::Radio group-->
-																	<div class="nav-group nav-group-fluid">
-																		<!--begin::Option-->
-																		<label>
-																			<input type="radio" class="btn-check" name="type" value="has" checked="checked">
-																			<span class="btn btn-sm btn-color-muted btn-active btn-active-primary fw-bold px-4">All</span>
-																		</label>
-																		<!--end::Option-->
-																		<!--begin::Option-->
-																		<label>
-																			<input type="radio" class="btn-check" name="type" value="users">
-																			<span class="btn btn-sm btn-color-muted btn-active btn-active-primary fw-bold px-4">Users</span>
-																		</label>
-																		<!--end::Option-->
-																		<!--begin::Option-->
-																		<label>
-																			<input type="radio" class="btn-check" name="type" value="orders">
-																			<span class="btn btn-sm btn-color-muted btn-active btn-active-primary fw-bold px-4">Orders</span>
-																		</label>
-																		<!--end::Option-->
-																	</div>
-																	<!--end::Radio group-->
-																</div>
+																
 																<!--end::Col-->
 															</div>
 															<!--end::Row-->
@@ -152,132 +137,17 @@
 													</div>
 													<!--end::Row-->
 													<!--begin::Row-->
-													<div class="row g-8">
-														<!--begin::Col-->
-														<div class="col-xxl-7">
-															<!--begin::Row-->
-															<div class="row g-8">
-																<!--begin::Col-->
-																<div class="col-lg-4">
-																	<label class="fs-6 form-label fw-bold text-dark">Min. Amount</label>
-																	<!--begin::Dialer-->
-																	<div class="position-relative" data-kt-dialer="true" data-kt-dialer-min="1000" data-kt-dialer-max="50000" data-kt-dialer-step="1000" data-kt-dialer-prefix="$" data-kt-dialer-decimals="2">
-																		<!--begin::Decrease control-->
-																		<button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
-																			<!--begin::Svg Icon | path: icons/duotune/general/gen042.svg-->
-																			<span class="svg-icon svg-icon-1">
-																				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																					<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor"></rect>
-																					<rect x="6.01041" y="10.9247" width="12" height="2" rx="1" fill="currentColor"></rect>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</button>
-																		<!--end::Decrease control-->
-																		<!--begin::Input control-->
-																		<input type="text" class="form-control form-control-solid border-0 ps-12" data-kt-dialer-control="input" placeholder="Amount" name="manageBudget" readonly="readonly" value="$50">
-																		<!--end::Input control-->
-																		<!--begin::Increase control-->
-																		<button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
-																			<!--begin::Svg Icon | path: icons/duotune/general/gen041.svg-->
-																			<span class="svg-icon svg-icon-1">
-																				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																					<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor"></rect>
-																					<rect x="10.8891" y="17.8033" width="12" height="2" rx="1" transform="rotate(-90 10.8891 17.8033)" fill="currentColor"></rect>
-																					<rect x="6.01041" y="10.9247" width="12" height="2" rx="1" fill="currentColor"></rect>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</button>
-																		<!--end::Increase control-->
-																	</div>
-																	<!--end::Dialer-->
-																</div>
-																<!--end::Col-->
-																<!--begin::Col-->
-																<div class="col-lg-4">
-																	<label class="fs-6 form-label fw-bold text-dark">Max. Amount</label>
-																	<!--begin::Dialer-->
-																	<div class="position-relative" data-kt-dialer="true" data-kt-dialer-min="1000" data-kt-dialer-max="50000" data-kt-dialer-step="1000" data-kt-dialer-prefix="$" data-kt-dialer-decimals="2">
-																		<!--begin::Decrease control-->
-																		<button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
-																			<!--begin::Svg Icon | path: icons/duotune/general/gen042.svg-->
-																			<span class="svg-icon svg-icon-1">
-																				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																					<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor"></rect>
-																					<rect x="6.01041" y="10.9247" width="12" height="2" rx="1" fill="currentColor"></rect>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</button>
-																		<!--end::Decrease control-->
-																		<!--begin::Input control-->
-																		<input type="text" class="form-control form-control-solid border-0 ps-12" data-kt-dialer-control="input" placeholder="Amount" name="manageBudget" readonly="readonly" value="$100">
-																		<!--end::Input control-->
-																		<!--begin::Increase control-->
-																		<button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
-																			<!--begin::Svg Icon | path: icons/duotune/general/gen041.svg-->
-																			<span class="svg-icon svg-icon-1">
-																				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																					<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor"></rect>
-																					<rect x="10.8891" y="17.8033" width="12" height="2" rx="1" transform="rotate(-90 10.8891 17.8033)" fill="currentColor"></rect>
-																					<rect x="6.01041" y="10.9247" width="12" height="2" rx="1" fill="currentColor"></rect>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</button>
-																		<!--end::Increase control-->
-																	</div>
-																	<!--end::Dialer-->
-																</div>
-																<!--end::Col-->
-																<!--begin::Col-->
-																<div class="col-lg-4">
-																	<label class="fs-6 form-label fw-bold text-dark">Team Size</label>
-																	<input type="text" class="form-control form-control form-control-solid" name="city">
-																</div>
-																<!--end::Col-->
-															</div>
-															<!--end::Row-->
-														</div>
-														<!--end::Col-->
-														<!--begin::Col-->
-														<div class="col-xxl-5">
-															<!--begin::Row-->
-															<div class="row g-8">
-																<!--begin::Col-->
-																<div class="col-lg-6">
-																	<label class="fs-6 form-label fw-bold text-dark">Category</label>
-																	<!--begin::Select-->
-																	<select class="form-select form-select-solid select2-hidden-accessible" data-control="select2" data-placeholder="In Progress" data-hide-search="true" data-select2-id="select2-data-13-s61l" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
-																		<option value=""></option>
-																		<option value="1">Not started</option>
-																		<option value="2" selected="selected" data-select2-id="select2-data-15-k2n0">Select</option>
-																		<option value="3">Done</option>
-																	</select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-14-0l2f" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-3tur-container" aria-controls="select2-3tur-container"><span class="select2-selection__rendered" id="select2-3tur-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-																	<!--end::Select-->
-																</div>
-																<!--end::Col-->
-																<!--begin::Col-->
-																<div class="col-lg-6">
-																	<label class="fs-6 form-label fw-bold text-dark">Status</label>
-																	<div class="form-check form-switch form-check-custom form-check-solid mt-1">
-																		<input class="form-check-input" type="checkbox" value="" id="flexSwitchChecked" checked="checked">
-																		<label class="form-check-label" for="flexSwitchChecked">Active</label>
-																	</div>
-																</div>
-																<!--end::Col-->
-															</div>
-															<!--end::Row-->
-														</div>
-														<!--end::Col-->
-													</div>
+													
 													<!--end::Row-->
+                                                    <div class="text-right">
+                                                        <button class="btn btn-primary" type="submit">Cari</button>
+                                                    </div>
 												</div>
 												<!--end::Advance form-->
 											</div>
 											<!--end::Card body-->
 										</div>
+                                    </form>
 										<!--end::Card-->
 									
             <!--begin::Header-->
@@ -286,24 +156,11 @@
                     <span class="card-label fw-bold fs-3 mb-1">Siswa</span>
                     <span class="text-muted mt-1 fw-semibold fs-7">Jumlah Siswa 500</span>
                 </h3>
-                {{-- <div class="card-toolbar">
-                    <!--begin::Menu-->
-                    <a href="{{'siswas/create'}}" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                        <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                        <span class="svg-icon svg-icon-2">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </a>
-
-                </div> --}}
             </div>
             <!--end::Header-->
             <!--begin::Body-->
-
             <div class="row">
                 <div class="card-body py-3">
-
                     <!--begin::Table container-->
                     <div class="table-responsive">
                         <!--begin::Table-->
@@ -326,8 +183,6 @@
                             <tbody>
 
                                 @foreach($siswas as $key => $siswa)
-
-
                                 <tr>
                                     {{-- <td><span style="width: 20px;"><label class="checkbox checkbox-single"><input id="checkBoxBuku" name="id_siswa[]" type="checkbox" value="{{ $siswa->id_siswa }}">&nbsp;<span></span></label></span></td> --}}
                                     <td>
@@ -389,7 +244,7 @@
             {{-- endrow 2 --}}
         </div>
     </div>
-</form>
+
 @endsection
 
 

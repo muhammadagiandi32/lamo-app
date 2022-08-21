@@ -50,3 +50,4 @@ Route::get('/showPayment/{id}', [App\Http\Controllers\PaymentController::class, 
 
 // Report
 Route::get('/report', [App\Http\Controllers\Report::class, 'index']);
+Route::post('/getDataReport', [App\Http\Controllers\Report::class, 'getDataReport']);

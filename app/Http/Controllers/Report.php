@@ -20,4 +20,9 @@ class Report extends Controller
 
         return view('report.spp', compact('siswas'));
     }
+
+    public function getDataReport(Request $request)
+    {
+        return response()->json(['snaptoken' => $request]);
+    }
 }
