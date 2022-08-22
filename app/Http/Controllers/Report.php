@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+
 class Report extends Controller
 {
     //
@@ -27,7 +28,7 @@ class Report extends Controller
         $date2 = Str::substr($request->date, 13);
         $type = $request->type;
 
-        $data =  DB::table('tagihans')->where('status', '=', $type)->whereBetween('bulan_bayar', [$date1, $date2])->get();
+        $data =  DB::table('tagihans')->join('siswas', 'tagihans.id_siswa', '=', 'siswas.id')->where('status', '=', $type)->whereBetween('bulan_bayar', [$date1, $date2])->get();
         // DB::enableQueryLog();
         // return dd($data);
         return response()->json(['data' => $data]);

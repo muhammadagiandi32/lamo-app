@@ -96,14 +96,16 @@ class PaymentController extends Controller
             'customer_details' => array(
                 'first_name' => $data_siswa,
                 'last_name' => '',
-                'email' => $email[0],
-                'phone' => $no_phone[0],
+                'email' => '',
+                'phone' => '',
             ),
         );
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         return response()->json(['snaptoken' => $snapToken]);
     }
+
+
 
     public function statusPayment(Request $request)
     {
@@ -129,6 +131,42 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function snaptokenBuku(Request $request)
+    {
+        $id_transaksi = rand();
+
+
+        // DB::table('tagihan_bukus')->where('id', $data)->update(['order_id' => $id_transaksi]);
+
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-JpF4nsP97oaxhsFzCoagiVUG';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+        $total = count($request->check) * $request->total;
+        // $email = $request->email;
+        // $no_phone = $request->no_phone;
+        $data_siswa = Auth::user()->name;
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => $id_transaksi,
+                'gross_amount' => intval($total),
+            ),
+            'customer_details' => array(
+                'first_name' => $data_siswa,
+                'last_name' => '',
+                'email' => Auth::user()->email,
+                'phone' => '',
+            ),
+        );
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        return response()->json(['snaptoken' => $snapToken]);
+    }
     public function create()
     {
         //

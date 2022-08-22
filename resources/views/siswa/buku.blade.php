@@ -37,7 +37,7 @@
                 <!--begin::Table container-->
                 <div class="table-responsive">
                     <!--begin::Table-->
-                    <form id="form_payment" method="POST" action="{{ url('/snaptoken') }}">
+                    <form id="form_payment_buku" method="POST" action="{{ url('/snaptokenBuku') }}">
                         <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
                             id="table_payment">
                             <!--begin::Table head-->
@@ -50,7 +50,7 @@
                                         </div>
                                     </th>
                                     <th class="min-w-200px">NIS & Class </th>
-                                    <th class="min-w-150px">Email & Number Phone</th>
+                                    <th class="min-w-150px">Nama Tagihan</th>
                                     <th class="min-w-150px text-end">Total & Month</th>
                                     {{-- <th class="min-w-100px text-end">Actions</th> --}}
                                 </tr>
@@ -59,7 +59,6 @@
                             <!--begin::Table body-->
                             <tbody>
                                 @foreach ($data as $data)
-
                                 <tr>
                                     <td @if($data->bulan_bayar < now())class="bg-danger" @endif>
                                             <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -76,17 +75,20 @@
                                             </div>
                                             <div class="d-flex justify-content-start flex-column">
                                                 <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{
-                                                    $data->user_id }}</a>
-                                                <span class="text-muted fw-bold text-muted d-block fs-7">{{ $data->kelas
+                                                    $data->nama_tagihan }}</a>
+                                                <span class="text-muted fw-bold text-muted d-block fs-7">{{
+                                                    $data->nama_tagihan
                                                     }}</span>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $data->email
+                                        <p class="text-dark fw-bolder text-hover-primary d-block fs-6">{{
+                                            $data->nama_tagihan
                                             }}</p>
-                                        <span class="text-muted fw-bold text-muted d-block fs-7">{{ $data->hp }}</span>
-                                        <input type="hidden" name="email[]" value="{{ $data->email }}">
+                                        <span class="text-muted fw-bold text-muted d-block fs-7">{{ $data->nama_tagihan
+                                            }}</span>
+                                        <input type="hidden" name="email[]" value="{{ $data->nama_tagihan }}">
                                         <input type="hidden" name="no_phone[]" value="{{ $data->hp }}">
                                     </td>
                                     <td>
@@ -117,9 +119,4 @@
     <!--end::Col-->
 </div>
 
-{{-- <script>
-    $(document).ready(function(){
-      
-    });
-</script> --}}
 @endsection

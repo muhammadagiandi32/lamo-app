@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\TagihanBuku;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SiswaController extends Controller
@@ -74,6 +75,14 @@ class SiswaController extends Controller
         return view('admin.siswa.dashboard', compact('siswa'));
     }
 
+
+    public function paymebtBuku()
+    {
+        $user = Siswa::select('*')->where('user_id', '=', Auth::user()->id)->first();
+        $data = TagihanBuku::select('*')->where('id_siswa', '=', $user->id)->get();
+        // dd($data);
+        return view('siswa.buku', ['data' => $data]);
+    }
     /**
      * Show the form for creating a new resource.
      *
