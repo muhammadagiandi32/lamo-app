@@ -96,8 +96,8 @@ class PaymentController extends Controller
             'customer_details' => array(
                 'first_name' => $data_siswa,
                 'last_name' => '',
-                'email' => '',
-                'phone' => '',
+                'email' => $email[0],
+                'phone' => $no_phone[0],
             ),
         );
         $snapToken = \Midtrans\Snap::getSnapToken($params);
@@ -136,7 +136,15 @@ class PaymentController extends Controller
     public function snaptokenBuku(Request $request)
     {
         $id_transaksi = rand();
-
+        foreach ($request->check as $data) {
+            // $bayar[] = [
+            //     'order_id' => $id_transaksi,
+            //     'tagihan_id' => $data,
+            //    'total_bayar' => $request->total,
+            //     'status' => 1
+            // ]; 
+            DB::table('tagihan_bukus')->where('id', $data)->update(['order_id' => $id_transaksi]);
+        }
 
         // DB::table('tagihan_bukus')->where('id', $data)->update(['order_id' => $id_transaksi]);
 

@@ -71,9 +71,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-45px me-5">
-                                                <img src="/metronic8/demo1/assets/media/avatars/300-14.jpg" alt="">
-                                            </div>
+
                                             <div class="d-flex justify-content-start flex-column">
                                                 <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{
                                                     $data->user_id }}</a>

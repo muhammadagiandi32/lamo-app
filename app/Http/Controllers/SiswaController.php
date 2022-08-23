@@ -79,7 +79,7 @@ class SiswaController extends Controller
     public function paymebtBuku()
     {
         $user = Siswa::select('*')->where('user_id', '=', Auth::user()->id)->first();
-        $data = TagihanBuku::select('*')->where('id_siswa', '=', $user->id)->get();
+        $data = TagihanBuku::select('*')->where('id_siswa', '=', $user->id)->where('status', '=', 0)->get();
         // dd($data);
         return view('siswa.buku', ['data' => $data]);
     }

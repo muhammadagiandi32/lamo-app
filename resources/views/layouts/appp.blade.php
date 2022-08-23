@@ -1085,19 +1085,19 @@ License: For each use you must have a valid license purchased only from above li
 							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 						}
 					});
-					const CallbackStatus = (resultNotifications) => {
-						// var test = null;
-						// var datanotif = resultNotifications;
-						var callbackAjax = $.ajax({
-							type: 'POST',
-							url: '/statusPayment',
-							headers: {
-								'CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-							},
-							data: resultNotifications,
-						});
-						return callbackAjax;
-					}
+					// const CallbackStatus = (resultNotifications) => {
+					// 	// var test = null;
+					// 	// var datanotif = resultNotifications;
+					// 	var callbackAjax = $.ajax({
+					// 		type: 'POST',
+					// 		url: '/statusPayment',
+					// 		headers: {
+					// 			'CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					// 		},
+					// 		data: resultNotifications,
+					// 	});
+					// 	return callbackAjax;
+					// }
 					$('#form_payment_buku').on('submit', function(event) {
 						event.preventDefault();
 						var form = this;
@@ -1115,12 +1115,13 @@ License: For each use you must have a valid license purchased only from above li
 								$(document).find('span.text-danger').text('');
 							},
 							success: function(token) {
-								// console.log(token);
+								console.log(token);
 								snap.pay(token.snaptoken, {
 									// Optional
 									onSuccess: function(result) {
 										// /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
 										// console.log(result);
+										console.log(result);
 									
 										setTimeout(function() {
 											location.reload();
@@ -1130,7 +1131,7 @@ License: For each use you must have a valid license purchased only from above li
 									// Optional
 									onPending: function(result) {
 										// /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-								
+										console.log(result);
 										setTimeout(function() {
 											location.reload();
 										}, 100);
@@ -1139,19 +1140,8 @@ License: For each use you must have a valid license purchased only from above li
 									// Optional
 									onError: function(result) {
 										// /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-										var notifications = {
-											finish_redirect_url: result.finish_redirect_url,
-											fraud_status: result.fraud_status,
-											gross_amount: result.gross_amount,
-											order_id: result.order_id,
-											payment_type: result.payment_type,
-											status_code: result.status_code,
-											status_message: result.status_message,
-											transaction_id: result.transaction_id,
-											transaction_status: result.transaction_status,
-											transaction_time: result.transaction_time
-										}
-										console.log(CallbackStatus(notifications));
+										console.log(result);
+
 										setTimeout(function() {
 											location.reload();
 										}, 100);

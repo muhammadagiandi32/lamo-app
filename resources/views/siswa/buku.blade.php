@@ -63,16 +63,13 @@
                                     <td @if($data->bulan_bayar < now())class="bg-danger" @endif>
                                             <div class="form-check form-check-sm form-check-custom form-check-solid">
                                                 <input name="check[]" id="check" class="form-check-input widget-9-check"
-                                                    type="checkbox" value="{{ $data->id_tagihan }}">
+                                                    type="checkbox" value="{{ $data->id }}">
                                                 <input name="total" id="check" class="form-check-input widget-9-check"
                                                     type="hidden" value="{{  $data->total }}">
                                             </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-45px me-5">
-                                                <img src="/metronic8/demo1/assets/media/avatars/300-14.jpg" alt="">
-                                            </div>
                                             <div class="d-flex justify-content-start flex-column">
                                                 <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{
                                                     $data->nama_tagihan }}</a>
