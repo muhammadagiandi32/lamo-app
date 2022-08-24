@@ -136,6 +136,8 @@
                                             <option value="" data-select2-id="select2-data-137-l9de"></option>
                                             <option value="1" data-select2-id="select2-data-138-tsvc">Sudah Lunas
                                             </option>
+                                            <option value="2" data-select2-id="select3-data-138-tsvc">Buku Lunas
+                                            </option>
                                             <option value="" selected="selected" data-select2-id="select2-data-12-j4ge">
                                                 Belum Lunas</option>
                                         </select>

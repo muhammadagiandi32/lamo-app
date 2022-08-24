@@ -178,7 +178,7 @@ License: For each use you must have a valid license purchased only from above li
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
 											</span>
-											<span class="menu-title">Laporan SPP</span>
+											<span class="menu-title">Laporan</span>
 										</a>
 									</div>
 									{{-- <div class="menu-item">
@@ -225,7 +225,7 @@ License: For each use you must have a valid license purchased only from above li
 											<span class="menu-title">Siswa</span>
 										</a>
 									</div>
-									<div class="menu-item">
+									{{-- <div class="menu-item">
 										<a class="menu-link" href="/metronic8/demo1/../demo1/pages/contact.html">
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
@@ -240,10 +240,10 @@ License: For each use you must have a valid license purchased only from above li
 											</span>
 											<span class="menu-title">Pembayaran Buku</span>
 										</a>
-									</div>
+									</div> --}}
 								</div>
 							</div>
-							<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+							{{-- <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
 								<span class="menu-link">
 									<span class="menu-icon">
 										<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
@@ -280,7 +280,7 @@ License: For each use you must have a valid license purchased only from above li
 										</a>
 									</div>
 								</div>
-							</div>
+							</div> --}}
 							<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
 								<span class="menu-link">
 									<span class="menu-icon">
@@ -305,20 +305,20 @@ License: For each use you must have a valid license purchased only from above li
 									<span class="menu-arrow"></span>
 								</span>
 								<div class="menu-sub menu-sub-accordion menu-active-bg">
-									<div class="menu-item">
+									{{-- <div class="menu-item">
 										<a class="menu-link" href="/metronic8/demo1/../demo1/pages/about.html">
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
 											</span>
 											<span class="menu-title">Tagihan SPP</span>
 										</a>
-									</div>
+									</div> --}}
 									<div class="menu-item">
 										<a class="menu-link" href="{{ url('/getDatasiswa') }}">
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
 											</span>
-											<span class="menu-title">Tagihan Buku</span>
+											<span class="menu-title">Tagihan</span>
 										</a>
 									</div>
 								</div>
@@ -942,6 +942,13 @@ License: For each use you must have a valid license purchased only from above li
 												</div>
 											</div>
 										</div>
+										<div class="form-group">
+											<label for="exampleSelectl">Pilih Tagihan</label>
+											<select name="type" class="form-control form-control-lg" id="exampleSelectl">
+												<option value="SPP">Tagihan SPP</option>
+												<option value="BUKU">Tagihan Buku</option>
+											</select>
+										</div>
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -974,8 +981,9 @@ License: For each use you must have a valid license purchased only from above li
 					contentType: false,
 					data: new FormData(form),
 					success: function(data) {
+						// console.log(data);
 						if (data.respon == 'success') {
-							Swal.fire("Menambahkan Tagihan Buku Berhasil", "Silahkan Klik OK!", "success");
+							Swal.fire("Menambahkan Tagihan Berhasil", "Silahkan Klik OK!", "success");
 							$('[type=checkbox]').prop("checked", false);
 							$("#tagihanBuku").html(``);
 						} else {

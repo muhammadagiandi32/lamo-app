@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Siswa;
+use App\Models\Tagihan;
 use App\Models\TagihanBuku;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -44,24 +45,49 @@ class SiswaController extends Controller
     public function tagihanBuku(Request $request)
     {
         // $validator = Validator::make($request->all(), ['name' => 'required']);
-        $arr = [];
-        foreach ($request->id_siswa as $data) {
-            $arr[] = [
-                'id_siswa' => $data,
-                'nama_tagihan' => $request->nama_tagihan,
-                'total' => $request->total,
-                'order_id' => 0,
-                'status' => 0,
-                'created_at' => now(),
-                'updated_at' => now()
-            ];
-        }
-        $return = TagihanBuku::insert($arr);
-        if ($return) {
-            return response()->json(['respon' => 'success']);
+        $date = date('Y-m') . '-05';
+        if ($request->type == "SPP") {
+            $arr = [];
+            foreach ($request->id_siswa as $data) {
+                $arr[] = [
+                    'id_siswa' => $data,
+                    'bulan_bayar' => $date,
+                    'total' => $request->total,
+                    'order_id' => 0,
+                    'status' => 0,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ];
+            }
+            $return = Tagihan::insert($arr);
+            if ($return) {
+                return response()->json(['respon' => 'success']);
+            } else {
+                return response()->json('gagal');
+            }
         } else {
-            return response()->json('gagal');
+            $arr = [];
+            foreach ($request->id_siswa as $data) {
+                $arr[] = [
+                    'id_siswa' => $data,
+                    'nama_tagihan' => $request->nama_tagihan,
+                    'total' => $request->total,
+                    'order_id' => 0,
+                    'status' => 0,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ];
+            }
+            $return = TagihanBuku::insert($arr);
+            if ($return) {
+                return response()->json(['respon' => 'success']);
+            } else {
+                return response()->json('gagal');
+            }
         }
+        // return $request->type;
+
+
     }
     public function dashboard()
     {
